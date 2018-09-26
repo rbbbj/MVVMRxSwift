@@ -10,12 +10,14 @@ class AlbumsViewController: UIViewController {
     private var album: Album? = nil
     private let viewModel: AlbumsViewModel = AlbumsViewModel(API: API())
     private let disposeBag = DisposeBag()
+    private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationBar()
         setupSearchBar()
+        setupRefreshControl()
         setupExpandingCell()
         bindViewModel()
         setupCellTapHandling()
@@ -58,6 +60,22 @@ extension AlbumsViewController {
             .disposed(by: disposeBag)
     }
     
+    fileprivate func setupRefreshControl() {
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+        
+        refreshControl.rx.controlEvent(.valueChanged)
+            .do(onNext: { [weak self] in
+                guard let `self` = self else { return }
+                self.viewModel.retrieveAllFromServer()
+            })
+            .subscribe()
+            .disposed(by: disposeBag)
+    }
+    
     fileprivate func setupExpandingCell() {
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
@@ -80,6 +98,13 @@ extension AlbumsViewController {
                 }
             }
             .subscribe()
+            .disposed(by: disposeBag)
+        
+        viewModel.pullToRefresh
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [refreshControl] value in
+                refreshControl.endRefreshing()
+            })
             .disposed(by: disposeBag)
     }
     

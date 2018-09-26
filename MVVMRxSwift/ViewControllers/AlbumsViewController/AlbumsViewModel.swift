@@ -8,6 +8,7 @@ final class AlbumsViewModel {
         return displayCells.asObservable()
     }
     let showError = PublishSubject<Void>()
+    let pullToRefresh = PublishSubject<Void>()
     let searchText = Variable<String>("")
     let clickSearchCancel = PublishSubject<Void>()
     private let cells = Variable<[Album]>([])
@@ -39,10 +40,12 @@ final class AlbumsViewModel {
                     self.cells.value = albums.map { $0 }
                     self.cells.value.sort { $0.userId < $1.userId }
                     self.displayCells.value = self.cells.value
+                    self.pullToRefresh.onNext(())
                 },
                 onError: { [weak self] error in
                     guard let `self` = self else { return }
                     self.showError.onNext(())
+                    self.pullToRefresh.onNext(())
                 }
             )
             .disposed(by: disposeBag)
