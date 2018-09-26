@@ -3,22 +3,24 @@ import RxSwift
 import RxCocoa
 
 class AlbumsViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     private var album: Album? = nil
     private let viewModel: AlbumsViewModel = AlbumsViewModel(API: API())
     private let disposeBag = DisposeBag()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationBar()
+        setupSearchBar()
         setupExpandingCell()
         bindViewModel()
         setupCellTapHandling()
         setupCellDeleting()
-
+        
         viewModel.retrieveAllFromServer()
     }
     
@@ -49,25 +51,32 @@ extension AlbumsViewController {
         navigationItem.leftBarButtonItem = editButtonItem
     }
     
+    fileprivate func setupSearchBar() {
+        searchBar.autocapitalizationType = .none
+        searchBar.rx.text.orEmpty
+            .bind(to : viewModel.searchText)
+            .disposed(by: disposeBag)
+    }
+    
     fileprivate func setupExpandingCell() {
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
         tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
     }
-
+    
     fileprivate func bindViewModel() {
         viewModel
             .albumCells
             .bind(to: tableView.rx.items(cellIdentifier: "AlbumsTableCell", cellType: AlbumsTableCell.self)) { row, element, cell in
-                    cell.configure(with: element)
+                cell.configure(with: element)
             }
             .disposed(by: disposeBag)
         
         viewModel.showError
             .map { [weak self] in {
-                    guard let `self` = self else { return }
-                    self.showErrorPopup()
+                guard let `self` = self else { return }
+                self.showErrorPopup()
                 }
             }
             .subscribe()
@@ -106,7 +115,7 @@ extension AlbumsViewController {
             )
             .disposed(by: disposeBag)
     }
-
+    
 }
 
 // MARK: - UITableViewDelegate
@@ -122,14 +131,14 @@ extension AlbumsViewController: UITableViewDelegate {
 // MARK: - Segues
 
 extension AlbumsViewController: SegueHandler {
-
+    
     enum SegueIdentifier: String {
         case
         albumsToAddAlbumSegue
         case
         albumToUpdateAlbumSegue
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch identifierForSegue(segue: segue) {
         case .albumsToAddAlbumSegue:
@@ -143,11 +152,11 @@ extension AlbumsViewController: SegueHandler {
             if let controller = segue.destination as? AlbumViewController {
                 guard let album = album else { return }
                 controller.viewModel = UpdateAlbumViewModel(album: album,
-                                                              dependency: (API: API(), validationService: ValidationService()))
+                                                            dependency: (API: API(), validationService: ValidationService()))
             }
         }
     }
-
+    
 }
 
 // MARK: - Privates

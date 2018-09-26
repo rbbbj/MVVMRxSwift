@@ -163,6 +163,7 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
+                        <outlet property="searchBar" destination="wwA-uY-MCI" id="lXY-Pw-N9a"/>
                         <outlet property="tableView" destination="NKL-9S-xiB" id="D0B-gJ-gsI"/>
                         <segue destination="0Bj-We-bkr" kind="show" identifier="albumToUpdateAlbumSegue" id="WeK-Mo-Lw8"/>
                     </connections>
