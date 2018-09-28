@@ -102,7 +102,7 @@ extension AlbumsViewController {
         
         viewModel.pullToRefresh
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [refreshControl] value in
+            .subscribe(onNext: { [refreshControl] in
                 refreshControl.endRefreshing()
             })
             .disposed(by: disposeBag)

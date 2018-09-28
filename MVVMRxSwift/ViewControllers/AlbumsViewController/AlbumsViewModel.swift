@@ -10,7 +10,6 @@ final class AlbumsViewModel {
     let showError = PublishSubject<Void>()
     let pullToRefresh = PublishSubject<Void>()
     let searchText = Variable<String>("")
-    let clickSearchCancel = PublishSubject<Void>()
     private let cells = Variable<[Album]>([])
     private var displayCells = Variable<[Album]>([])
     private let api: API
