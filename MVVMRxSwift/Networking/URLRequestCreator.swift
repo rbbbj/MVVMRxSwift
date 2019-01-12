@@ -1,7 +1,6 @@
 import Foundation
 
 final class URLRequestCreator {
-    
     enum Method: String {
         case GET
         case POST
@@ -15,5 +14,4 @@ final class URLRequestCreator {
         request.httpMethod = method.rawValue
         return request
     }
-    
 }

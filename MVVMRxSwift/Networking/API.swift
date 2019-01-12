@@ -4,7 +4,6 @@ import RxSwift
 import RxCocoa
 
 final class API {
-    
     private var isOnline: Bool  {
         if let reachability = Reachability(), reachability.connection != .none {
             return true
@@ -21,26 +20,28 @@ final class API {
                         return
                     }
                     guard let result = result else {
-                        let unknownError = BAError.connectionError(reason: "Unknown error.")
+                        let unknownError = GenaralError.unknownError(reason: "Unknown error.")
                         observer(.error(unknownError))
                         return
                     }
 
-                    DispatchQueue.main.async {
-                        StorageLayer.shared.removeAll()
-                        result.forEach {
-                            let album = $0
-                            StorageLayer.shared.add(album: album)
-                        }
+                    StorageLayer.shared.removeAll()
+                    result.forEach {
+                        let album = $0
+                        StorageLayer.shared.add(album: album)
                     }
-
+                    
                     observer(.success(result))
                 }
             } else {
                 var albums = [Album]()
-                let dbAlbums = StorageLayer.shared.retrieveAll()
-                for album in dbAlbums {
-                    albums.append(album)
+                guard let dbAlbums = StorageLayer.shared.retrieveAll() else {
+                    let unknownError = GenaralError.databaseError(reason: "Database error.")
+                    observer(.error(unknownError))
+                    return Disposables.create {}
+                }
+                dbAlbums.forEach {
+                    albums.append($0.asDomain())
                 }
                 observer(.success(albums))
             }
@@ -52,9 +53,13 @@ final class API {
     func retrieveAllFromDatabase() -> Single<[Album]> {
         return Single.create { observer in
             var albums = [Album]()
-            let dbAlbums = StorageLayer.shared.retrieveAll()
-            for album in dbAlbums {
-                albums.append(album)
+            guard let dbAlbums = StorageLayer.shared.retrieveAll() else {
+                let unknownError = GenaralError.databaseError(reason: "Database error.")
+                observer(.error(unknownError))
+                return Disposables.create {}
+            }
+            dbAlbums.forEach {
+                albums.append($0.asDomain())
             }
             observer(.success(albums))
             return Disposables.create {}
@@ -70,13 +75,11 @@ final class API {
                         return
                     }
                     
-                    DispatchQueue.main.async {
-                        StorageLayer.shared.delete(album: album)
-                        observer(.success(())) //rbb???
-                    }
+                    StorageLayer.shared.remove(album: album)
+                    observer(.success(()))
                 }
             } else {
-                let connectionError = BAError.connectionError(reason: "No connection.")
+                let connectionError = GenaralError.connectionError(reason: "No connection.")
                 observer(.error(connectionError))
             }
             return Disposables.create {}
@@ -92,19 +95,16 @@ final class API {
                         return
                     }
                     guard let result = result else {
-                        let unknownError = BAError.connectionError(reason: "Unknown error.")
+                        let unknownError = GenaralError.unknownError(reason: "Unknown error.")
                         observer(.error(unknownError))
                         return
                     }
                     
-                    DispatchQueue.main.async {
-                        album.id = StorageLayer.shared.currentCount() + 1
-                        StorageLayer.shared.add(album: result)
-                    }
+                    StorageLayer.shared.add(album: result)
                     observer(.success(()))
                 }
             } else {
-                let connectionError = BAError.connectionError(reason: "No connection.")
+                let connectionError = GenaralError.connectionError(reason: "No connection.")
                 observer(.error(connectionError))
             }
             return Disposables.create {}
@@ -120,24 +120,21 @@ final class API {
                         return
                     }
                     guard let result = result else {
-                        let unknownError = BAError.connectionError(reason: "Unknown error.")
+                        let unknownError = GenaralError.unknownError(reason: "Unknown error.")
                         observer(.error(unknownError))
                         return
                     }
                     
                     let album = result
-                    DispatchQueue.main.async {
-                        StorageLayer.shared.update(album: album)
-                    }
+                    StorageLayer.shared.update(album: album)
                     observer(.success(album))
                 }
             } else {
-                let connectionError = BAError.connectionError(reason: "No connection.")
+                let connectionError = GenaralError.connectionError(reason: "No connection.")
                 observer(.error(connectionError))
             }
-            return Disposables.create {}
             
+            return Disposables.create {}
         }
     }
-    
 }

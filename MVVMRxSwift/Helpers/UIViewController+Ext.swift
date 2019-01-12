@@ -1,7 +1,6 @@
 import UIKit
 
 extension UIViewController {
-    
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -10,13 +9,11 @@ extension UIViewController {
     @objc fileprivate func dismissKeyboard() {
         view.endEditing(true)
     }
-    
 }
 
 // *** holko.pl/2017/06/26/checking-uiviewcontroller-deallocation ***
 // Very usefull for checking view controller dealocation.
 extension UIViewController {
-    
     /// This method asserts whether a view controller gets deallocated after it disappeared
     /// due to one of these reasons:
     /// - it was removed from its parent, or
@@ -58,5 +55,4 @@ extension UIViewController {
         
         return root
     }
-    
 }

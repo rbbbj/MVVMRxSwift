@@ -3,7 +3,6 @@ import UIKit
 typealias AlertCompletion = () -> Void
 
 extension UIAlertController {
-    
     public enum CancelButton {
         case none
         case `default`
@@ -20,13 +19,10 @@ extension UIAlertController {
             }
         }
     }
-    
 }
 
 extension UIAlertController {
-    
     static fileprivate var anAlertIsVisible = false
-
     static fileprivate func simpleAlert(title: String?,
                                         message: String?,
                                         okTitle: String = "OK",
@@ -75,11 +71,9 @@ extension UIAlertController {
         
         return alertController
     }
-    
 }
 
 extension UIViewController {
-    
     func presentSimpleAlert(title: String,
                             message: String,
                             okTitle: String = "OK",
@@ -120,5 +114,4 @@ extension UIViewController {
         presenter.present(nextItem.presentee, animated: true)
         UIAlertController.anAlertIsVisible = true
     }
-    
 }

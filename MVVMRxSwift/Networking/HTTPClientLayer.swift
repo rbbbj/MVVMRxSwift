@@ -2,7 +2,6 @@ import Foundation
 import RxSwift
 
 final class HTTPClientLayer {
-    
     typealias ErrorClosure = (_ error: Error?) -> ()
     typealias ItemsAndErrorClosure = (_ albums: [Album]?, _ error: Error?) -> ()
     typealias ItemAndErrorClosure = (_ album: Album?, _ error: Error?) -> ()
@@ -47,7 +46,12 @@ final class HTTPClientLayer {
     
     func processDeleteRequest(for album: Album,
                               completion: @escaping ErrorClosure) {
-        let urlString = URLs.host + URLs.path.albums + "/" + String(album.id)
+        guard let albumId = album.id else {
+            let error = GenaralError.unknownError(reason: "Unknown error.")
+            completion(error)
+            return
+        }
+        let urlString = URLs.host + URLs.path.albums + "/" + String(albumId)
         // Check if URL can be created
         guard let url = URL(string: urlString) else {
             let error = DataError.urlError(reason: "Could not create URL with " + urlString)
@@ -106,7 +110,12 @@ final class HTTPClientLayer {
     func processUpdateRequest(currentAlbum: Album,
                               with newAlbum: Album,
                               completion: @escaping ItemAndErrorClosure) {
-        let urlString = URLs.host + URLs.path.albums + "/" + String(currentAlbum.id)
+        guard let currentAlbumId = currentAlbum.id else {
+            let error = GenaralError.unknownError(reason: "Unknown error.")
+            completion(nil, error)
+            return
+        }
+        let urlString = URLs.host + URLs.path.albums + "/" + String(currentAlbumId)
         // Check if URL can be created
         guard let url = URL(string: urlString) else {
             let error = DataError.urlError(reason: "Could not create URL with " + urlString)
@@ -140,5 +149,5 @@ final class HTTPClientLayer {
             }
             }.resume()
     }
-    
 }
+

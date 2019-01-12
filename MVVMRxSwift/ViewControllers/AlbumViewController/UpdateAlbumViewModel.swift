@@ -3,7 +3,6 @@ import RxSwift
 import RxCocoa
 
 final class UpdateAlbumViewModel : AlbumViewModel {
-    
     // Protocol (should be let so can't be in protocol extension)
     let userid = Variable<String>("")
     let title = Variable<String>("")
@@ -27,8 +26,8 @@ final class UpdateAlbumViewModel : AlbumViewModel {
     init(album: Album, dependency: (API: API, validationService: ValidationService)) {
         self.api = API()
         
-        userid.value = String(album.userId)
-        title.value = String(album.title)
+        userid.value = String(album.userId ?? -1)
+        title.value = String(album.title ?? "")
         
         validatedUserId = userid.asObservable()
             .map { userid in
@@ -79,5 +78,4 @@ final class UpdateAlbumViewModel : AlbumViewModel {
             )
             .disposed(by: disposeBag)
     }
-    
 }

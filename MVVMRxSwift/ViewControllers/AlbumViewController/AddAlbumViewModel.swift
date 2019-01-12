@@ -3,7 +3,6 @@ import RxSwift
 import RxCocoa
 
 final class AddAlbumViewModel: AlbumViewModel {
-    
     // Protocol (should be let so can't be in protocol extension)
     let userid = Variable<String>("")
     let title = Variable<String>("")
@@ -76,5 +75,4 @@ final class AddAlbumViewModel: AlbumViewModel {
             )
             .disposed(by: disposeBag)
     }
-    
 }

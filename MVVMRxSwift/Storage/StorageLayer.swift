@@ -1,50 +1,77 @@
 import Foundation
+import Realm
 import RealmSwift
 
 final class StorageLayer {
-    
-    private let realm: Realm
+    // Instances of Realm thread-contained.
+    // This queue is created once, so it's guaranteed all Realm instances are handled in this queue
+    private let realmQueue: DispatchQueue
     
     // Singelton
     static var shared = StorageLayer()
     private init() {
-        realm = try! Realm()
+        realmQueue = DispatchQueue(label: "com.MVVMRxSwift.realm")
     }
     
-    func retrieveAll() -> Results<Album> {
-        return realm.objects(Album.self)
-    }
-    
-    func add(album: Album) {
-        try! realm.write {
-            realm.add(album)
-        }
-    }
-    
-    func delete(album: Album) {
-        try! realm.write {
-            realm.delete(album)
+    func remove(album: Album) {
+        realmQueue.async {
+            if let realm = try? Realm() {
+                try? realm.write {
+                    realm.delete(album.asRealm())
+                }
+            }
         }
     }
     
     func removeAll() {
-        try! realm.write {
-            realm.deleteAll()
+        realmQueue.async {
+            if let realm = try? Realm() {
+                try? realm.write {
+                    realm.deleteAll()
+                }
+            }
+        }
+    }
+    
+    func add(album: Album) {
+        realmQueue.async {
+            if let realm = try? Realm() {
+                try? realm.write {
+                    realm.add(album.asRealm())
+                }
+            }
         }
     }
     
     func update(album: Album) {
-        try! realm.write {
-            realm.add(album, update: true)
+        realmQueue.async {
+            if let realm = try? Realm() {
+                try? realm.write {
+                    realm.add(album.asRealm(), update: true)
+                }
+            }
         }
     }
     
-    func retrieveAlbum(forPrimaryKey key: Int) -> Album? {
-        return realm.object(ofType: Album.self, forPrimaryKey: key)
+    func retrieveAll() -> Results<RMAlbum>? {
+        var results: Results<RMAlbum>?
+        realmQueue.sync {
+            if let realm = try? Realm() {
+                results = realm.objects(RMAlbum.self)
+            }
+        }
+        
+        return results
     }
     
     func currentCount() -> Int {
-        return realm.objects(Album.self).count
+        var count = 0
+        realmQueue.sync {
+            if let realm = try? Realm() {
+                count = realm.objects(RMAlbum.self).count
+            }
+        }
+        
+        return count
     }
-
 }

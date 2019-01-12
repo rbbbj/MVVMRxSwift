@@ -20,7 +20,6 @@ extension ValidationResult {
 }
 
 class ValidationService {
-    
     func validateUserId(_ userId: String) -> ValidationResult {
         if userId.isEmpty {
             return .failed(message: "Used ID can't be empty")
@@ -44,5 +43,4 @@ class ValidationService {
         
         return .ok(message: "Acceptable")
     }
-
 }

@@ -3,7 +3,6 @@ import RxSwift
 import RxCocoa
 
 final class AlbumsViewModel {
-    
     var albumCells: Observable<[Album]> {
         return displayCells.asObservable()
     }
@@ -24,7 +23,7 @@ final class AlbumsViewModel {
                 if searchText.count == 0 {
                     self.displayCells.value = self.cells.value
                 } else {
-                    self.displayCells.value = self.cells.value.filter { $0.title.contains(searchText) }
+                    self.displayCells.value = self.cells.value.filter { ($0.title ?? "").contains(searchText) }
                 }
             })
             .disposed(by: disposeBag)
@@ -37,7 +36,7 @@ final class AlbumsViewModel {
                 onSuccess: { [weak self] albums in
                     guard let `self` = self else { return }
                     self.cells.value = albums.map { $0 }
-                    self.cells.value.sort { $0.userId < $1.userId }
+                    self.cells.value.sort { ($0.userId ?? -1) < ($1.userId ?? -1) }
                     self.displayCells.value = self.cells.value
                     self.pullToRefresh.onNext(())
                 },
@@ -57,7 +56,7 @@ final class AlbumsViewModel {
                 onSuccess: { [weak self] albums in
                     guard let `self` = self else { return }
                     self.cells.value = albums.map { $0 }
-                    self.cells.value.sort { $0.userId < $1.userId }
+                    self.cells.value.sort { ($0.userId ?? -1) < ($1.userId ?? -1) }
                     self.displayCells.value = self.cells.value
                 },
                 onError: { [weak self] error in
@@ -83,5 +82,4 @@ final class AlbumsViewModel {
             )
             .disposed(by: disposeBag)
     }
-    
 }

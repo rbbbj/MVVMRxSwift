@@ -1,0 +1,33 @@
+
+/* Class = "UIViewController"; title = "Album"; ObjectID = "0Bj-We-bkr"; */
+"0Bj-We-bkr.title" = "Album";
+
+/* Class = "UINavigationItem"; title = "Albums"; ObjectID = "1qC-Ou-gG6"; */
+"1qC-Ou-gG6.title" = "Albums";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Ce4-Uw-dQy"; */
+"Ce4-Uw-dQy.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "H2S-LE-WEU"; */
+"H2S-LE-WEU.normalTitle" = "Submit";
+
+/* Class = "UILabel"; text = "title validation"; ObjectID = "MDX-bu-UWT"; */
+"MDX-bu-UWT.text" = "title validation";
+
+/* Class = "UITextField"; placeholder = "User ID"; ObjectID = "QUw-nj-xdv"; */
+"QUw-nj-xdv.placeholder" = "User ID";
+
+/* Class = "UILabel"; text = "999"; ObjectID = "hos-vI-VOf"; */
+"hos-vI-VOf.text" = "999";
+
+/* Class = "UILabel"; text = "userId validation"; ObjectID = "jaU-hl-SrE"; */
+"jaU-hl-SrE.text" = "userId validation";
+
+/* Class = "UINavigationItem"; title = "Album"; ObjectID = "pGT-51-uMN"; */
+"pGT-51-uMN.title" = "Album";
+
+/* Class = "UITextField"; placeholder = "Title"; ObjectID = "uPQ-pb-3Yc"; */
+"uPQ-pb-3Yc.placeholder" = "Title";
+
+/* Class = "UISearchBar"; placeholder = "Title"; ObjectID = "wwA-uY-MCI"; */
+"wwA-uY-MCI.placeholder" = "Title";

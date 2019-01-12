@@ -3,7 +3,6 @@ import RxSwift
 import RxCocoa
 
 class AlbumsViewController: UIViewController {
-    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -42,13 +41,11 @@ class AlbumsViewController: UIViewController {
             navigationItem.leftBarButtonItem?.title = "Edit"
         }
     }
-    
 }
 
 // MARK: - rx
 
 extension AlbumsViewController {
-    
     fileprivate func setupNavigationBar() {
         navigationItem.leftBarButtonItem = editButtonItem
     }
@@ -140,23 +137,19 @@ extension AlbumsViewController {
             )
             .disposed(by: disposeBag)
     }
-    
 }
 
 // MARK: - UITableViewDelegate
 
 extension AlbumsViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
 }
 
 // MARK: - Segues
 
 extension AlbumsViewController: SegueHandler {
-    
     enum SegueIdentifier: String {
         case
         albumsToAddAlbumSegue
@@ -181,15 +174,12 @@ extension AlbumsViewController: SegueHandler {
             }
         }
     }
-    
 }
 
 // MARK: - Privates
 
 extension AlbumsViewController {
-    
     fileprivate func showErrorPopup() {
         self.presentSimpleAlert(title: "Error", message: "Error occured.")
     }
-    
 }

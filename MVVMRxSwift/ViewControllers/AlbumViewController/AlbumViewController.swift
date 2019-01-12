@@ -3,7 +3,6 @@ import RxSwift
 import NVActivityIndicatorView
 
 class AlbumViewController: UIViewController {
-
     @IBOutlet weak var userIdTextField: UITextField!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var submitBtn: UIButton!
@@ -36,13 +35,11 @@ class AlbumViewController: UIViewController {
         super.viewDidDisappear(animated)
         dch_checkDeallocation()
     }
-    
 }
 
 // MARK: - rx
 
 extension AlbumViewController {
-    
     fileprivate func bindViewModel() {
         guard let viewModel = viewModel else {
             return
@@ -114,15 +111,12 @@ extension AlbumViewController {
             activityIndicator.removeFromSuperview()
         }
     }
-    
 }
 
 // MARK: - Privates
 
 extension AlbumViewController {
-    
     fileprivate func showErrorPopup() {
         self.presentSimpleAlert(title: "Error", message: "Error occured.")
     }
-    
 }
