@@ -14,8 +14,7 @@ final class HTTPClientLayer {
         let urlString = URLs.host + URLs.path.albums
         // Check if URL can be created
         guard let url = URL(string: urlString) else {
-            let error = DataError.urlError(reason: "Could not create URL with " + urlString)
-            completion(nil, error)
+            completion(nil, DataError.urlError)
             return
         }
 
@@ -29,8 +28,7 @@ final class HTTPClientLayer {
 
             // Make sure we got data
             guard let data = data else {
-                let error = DataError.noDataError(reason: "No data for URL received")
-                completion(nil, error)
+                completion(nil, DataError.noDataError)
                 return
             }
 
@@ -38,8 +36,7 @@ final class HTTPClientLayer {
                 let jsonData = try JSONDecoder().decode([Album].self, from: data)
                 completion(jsonData, nil)
             } catch {
-                let error = DataError.serializationError(reason: "Serialization error for data from URL " + urlString)
-                completion(nil, error)
+                completion(nil, DataError.serializationError)
             }
             }.resume()
     }
@@ -47,15 +44,13 @@ final class HTTPClientLayer {
     func processDeleteRequest(for album: Album,
                               completion: @escaping ErrorClosure) {
         guard let albumId = album.id else {
-            let error = GenaralError.unknownError(reason: "Unknown error.")
-            completion(error)
+            completion(DataError.unknownError)
             return
         }
         let urlString = URLs.host + URLs.path.albums + "/" + String(albumId)
         // Check if URL can be created
         guard let url = URL(string: urlString) else {
-            let error = DataError.urlError(reason: "Could not create URL with " + urlString)
-            completion(error)
+            completion(DataError.urlError)
             return
         }
         
@@ -75,8 +70,7 @@ final class HTTPClientLayer {
         let urlString = URLs.host + URLs.path.albums
         // Check if URL can be created
         guard let url = URL(string: urlString) else {
-            let error = DataError.urlError(reason: "Could not create URL with " + urlString)
-            completion(nil, error)
+            completion(nil, DataError.urlError)
             return
         }
 
@@ -92,8 +86,7 @@ final class HTTPClientLayer {
 
             // Make sure we got data
             guard let data = data else {
-                let error = DataError.noDataError(reason: "No data for URL received")
-                completion(nil, error)
+                completion(nil, DataError.noDataError)
                 return
             }
 
@@ -101,8 +94,7 @@ final class HTTPClientLayer {
                 let jsonData = try JSONDecoder().decode(Album.self, from: data)
                 completion(jsonData, nil)
             } catch {
-                let error = DataError.serializationError(reason: "Serialization error for data from URL " + urlString)
-                completion(nil, error)
+                completion(nil, DataError.serializationError)
             }
             }.resume()
     }
@@ -111,15 +103,13 @@ final class HTTPClientLayer {
                               with newAlbum: Album,
                               completion: @escaping ItemAndErrorClosure) {
         guard let currentAlbumId = currentAlbum.id else {
-            let error = GenaralError.unknownError(reason: "Unknown error.")
-            completion(nil, error)
+            completion(nil, DataError.unknownError)
             return
         }
         let urlString = URLs.host + URLs.path.albums + "/" + String(currentAlbumId)
         // Check if URL can be created
         guard let url = URL(string: urlString) else {
-            let error = DataError.urlError(reason: "Could not create URL with " + urlString)
-            completion(nil, error)
+            completion(nil, DataError.urlError)
             return
         }
         
@@ -135,8 +125,7 @@ final class HTTPClientLayer {
             
             // Make sure we got data
             guard let data = data else {
-                let error = DataError.noDataError(reason: "No data for URL received")
-                completion(nil, error)
+                completion(nil, DataError.noDataError)
                 return
             }
             
@@ -144,8 +133,7 @@ final class HTTPClientLayer {
                 let jsonData = try JSONDecoder().decode(Album.self, from: data)
                 completion(jsonData, nil)
             } catch {
-                let error = DataError.serializationError(reason: "Serialization error for data from URL " + urlString)
-                completion(nil, error)
+                completion(nil, DataError.serializationError)
             }
             }.resume()
     }

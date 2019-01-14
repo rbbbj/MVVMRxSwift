@@ -11,14 +11,19 @@ final class AddAlbumViewModel: AlbumViewModel {
     let submitButtonTap = PublishSubject<Void>()
     var submitButtonEnabled: Driver<Bool>
     let navigateBack = PublishSubject<Void>()
-    let showError = PublishSubject<Void>()
     var showLoadingHud: Driver<Bool> {
         return loadInProgress
             .asObservable()
             .distinctUntilChanged()
             .asDriver(onErrorJustReturn: false)
     }
-    
+    var showErrorHud: Driver<String> {
+        return errorMessage
+            .asObservable()
+            .distinctUntilChanged()
+            .asDriver(onErrorJustReturn: "")
+    }
+    private let errorMessage = Variable<String>("")
     private let disposeBag = DisposeBag()
     private let loadInProgress = Variable<Bool>(false)
     private let api: API
@@ -70,7 +75,7 @@ final class AddAlbumViewModel: AlbumViewModel {
                 onError: { [weak self] error in
                     guard let `self` = self else { return }
                     self.loadInProgress.value = false
-                    self.showError.onNext(())
+                    self.errorMessage.value = error.localizedDescription
                 }
             )
             .disposed(by: disposeBag)

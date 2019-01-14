@@ -10,6 +10,6 @@ protocol AlbumViewModel {
     var submitButtonTap: PublishSubject<Void> { get }
     var submitButtonEnabled: Driver<Bool> { get }
     var navigateBack: PublishSubject<Void> { get }
-    var showError: PublishSubject<Void> { get }
     var showLoadingHud: Driver<Bool> { get }
+    var showErrorHud: Driver<String>  { get }
 }

@@ -13,18 +13,19 @@ final class API {
     
     func retrieveAllFromServer() -> Single<[Album]> {
         return Single.create{ [isOnline] observer in
-            if isOnline {
+            if !isOnline {
+                return Disposables.create {}
+            } else {
                 HTTPClientLayer.shared.processFetchRequest() { result, error in
                     if let error = error {
                         observer(.error(error))
                         return
                     }
                     guard let result = result else {
-                        let unknownError = GenaralError.unknownError(reason: "Unknown error.")
-                        observer(.error(unknownError))
+                        observer(.error(DataError.unknownError))
                         return
                     }
-
+                    
                     StorageLayer.shared.removeAll()
                     result.forEach {
                         let album = $0
@@ -33,17 +34,6 @@ final class API {
                     
                     observer(.success(result))
                 }
-            } else {
-                var albums = [Album]()
-                guard let dbAlbums = StorageLayer.shared.retrieveAll() else {
-                    let unknownError = GenaralError.databaseError(reason: "Database error.")
-                    observer(.error(unknownError))
-                    return Disposables.create {}
-                }
-                dbAlbums.forEach {
-                    albums.append($0.asDomain())
-                }
-                observer(.success(albums))
             }
             
             return Disposables.create {}
@@ -54,8 +44,7 @@ final class API {
         return Single.create { observer in
             var albums = [Album]()
             guard let dbAlbums = StorageLayer.shared.retrieveAll() else {
-                let unknownError = GenaralError.databaseError(reason: "Database error.")
-                observer(.error(unknownError))
+                observer(.error(DataError.databaseError))
                 return Disposables.create {}
             }
             dbAlbums.forEach {
@@ -68,7 +57,9 @@ final class API {
     
     func delete(album: Album) -> Single<Void> {
         return Single.create{ [isOnline] observer in
-            if isOnline {
+            if !isOnline {
+                return Disposables.create {}
+            } else {
                 HTTPClientLayer.shared.processDeleteRequest(for: album) { error in
                     if let error = error {
                         observer(.error(error))
@@ -78,9 +69,6 @@ final class API {
                     StorageLayer.shared.remove(album: album)
                     observer(.success(()))
                 }
-            } else {
-                let connectionError = GenaralError.connectionError(reason: "No connection.")
-                observer(.error(connectionError))
             }
             return Disposables.create {}
         }
@@ -88,24 +76,22 @@ final class API {
     
     func add(album: Album) -> Single<Void> {
         return Single.create{ [isOnline] observer in
-            if isOnline {
+            if !isOnline {
+                return Disposables.create {}
+            } else {
                 HTTPClientLayer.shared.processAddRequest(album: album) { result, error in
                     if let error = error {
                         observer(.error(error))
                         return
                     }
                     guard let result = result else {
-                        let unknownError = GenaralError.unknownError(reason: "Unknown error.")
-                        observer(.error(unknownError))
+                        observer(.error(DataError.unknownError))
                         return
                     }
                     
                     StorageLayer.shared.add(album: result)
                     observer(.success(()))
                 }
-            } else {
-                let connectionError = GenaralError.connectionError(reason: "No connection.")
-                observer(.error(connectionError))
             }
             return Disposables.create {}
         }
@@ -113,15 +99,16 @@ final class API {
     
     func update(currentAlbum: Album, with newAlbum: Album) -> Single<Album> {
         return Single.create { [isOnline] observer in
-            if isOnline {
+            if !isOnline {
+                return Disposables.create {}
+            } else {
                 HTTPClientLayer.shared.processUpdateRequest(currentAlbum: currentAlbum, with: newAlbum) { result, error in
                     if let error = error {
                         observer(.error(error))
                         return
                     }
                     guard let result = result else {
-                        let unknownError = GenaralError.unknownError(reason: "Unknown error.")
-                        observer(.error(unknownError))
+                        observer(.error(DataError.unknownError))
                         return
                     }
                     
@@ -129,9 +116,6 @@ final class API {
                     StorageLayer.shared.update(album: album)
                     observer(.success(album))
                 }
-            } else {
-                let connectionError = GenaralError.connectionError(reason: "No connection.")
-                observer(.error(connectionError))
             }
             
             return Disposables.create {}

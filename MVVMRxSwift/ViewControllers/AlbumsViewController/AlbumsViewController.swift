@@ -1,6 +1,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SwiftMessages
 
 class AlbumsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -88,20 +89,18 @@ extension AlbumsViewController {
             }
             .disposed(by: disposeBag)
         
-        viewModel.showError
-            .map { [weak self] in {
-                guard let `self` = self else { return }
-                self.showErrorPopup()
-                }
-            }
-            .subscribe()
-            .disposed(by: disposeBag)
-        
         viewModel.pullToRefresh
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [refreshControl] in
                 refreshControl.endRefreshing()
             })
+            .disposed(by: disposeBag)
+        
+        viewModel.showErrorHud
+            .map {
+                ErrorMessage.showErrorHud(with: $0)
+            }
+            .drive()
             .disposed(by: disposeBag)
     }
     
@@ -179,7 +178,7 @@ extension AlbumsViewController: SegueHandler {
 // MARK: - Privates
 
 extension AlbumsViewController {
-    fileprivate func showErrorPopup() {
-        self.presentSimpleAlert(title: "Error", message: "Error occured.")
+    @objc fileprivate func retryTapped() {
+        self.viewModel.retrieveAllFromServer()
     }
 }

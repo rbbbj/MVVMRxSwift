@@ -6,9 +6,15 @@ final class AlbumsViewModel {
     var albumCells: Observable<[Album]> {
         return displayCells.asObservable()
     }
-    let showError = PublishSubject<Void>()
     let pullToRefresh = PublishSubject<Void>()
     let searchText = Variable<String>("")
+    var showErrorHud: Driver<String> {
+        return errorMessage
+            .asObservable()
+            .distinctUntilChanged()
+            .asDriver(onErrorJustReturn: "")
+    }
+    private let errorMessage = Variable<String>("")
     private let cells = Variable<[Album]>([])
     private var displayCells = Variable<[Album]>([])
     private let api: API
@@ -39,10 +45,11 @@ final class AlbumsViewModel {
                     self.cells.value.sort { ($0.userId ?? -1) < ($1.userId ?? -1) }
                     self.displayCells.value = self.cells.value
                     self.pullToRefresh.onNext(())
+                    self.errorMessage.value = ""
                 },
                 onError: { [weak self] error in
                     guard let `self` = self else { return }
-                    self.showError.onNext(())
+                    self.errorMessage.value = error.localizedDescription
                     self.pullToRefresh.onNext(())
                 }
             )
@@ -58,10 +65,11 @@ final class AlbumsViewModel {
                     self.cells.value = albums.map { $0 }
                     self.cells.value.sort { ($0.userId ?? -1) < ($1.userId ?? -1) }
                     self.displayCells.value = self.cells.value
+                    self.errorMessage.value = ""
                 },
                 onError: { [weak self] error in
                     guard let `self` = self else { return }
-                    self.showError.onNext(())
+                    self.errorMessage.value = error.localizedDescription
                 }
             )
             .disposed(by: disposeBag)
@@ -74,10 +82,11 @@ final class AlbumsViewModel {
                 onSuccess: { [weak self] _ in
                     guard let `self` = self else { return }
                     self.retrieveAllFromDatabase()
+                    self.errorMessage.value = ""
                 },
                 onError: { [weak self] error in
                     guard let `self` = self else { return }
-                    self.showError.onNext(())
+                    self.errorMessage.value = error.localizedDescription
                 }
             )
             .disposed(by: disposeBag)

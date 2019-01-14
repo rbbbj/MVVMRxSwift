@@ -11,6 +11,7 @@ target 'MVVMRxSwift' do
   pod 'RealmSwift'
   pod 'NVActivityIndicatorView'
   pod 'ReachabilitySwift'
+  pod 'SwiftMessages'
 
   target 'MVVMRxSwiftTests' do
     inherit! :search_paths

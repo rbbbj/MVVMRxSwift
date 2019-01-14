@@ -93,12 +93,11 @@ extension AlbumViewController {
             .drive(titleValidationLabel.rx.validationResult)
             .disposed(by: disposeBag)
         
-        viewModel.showError
-            .map { [weak self] in {
-                self?.showErrorPopup()
-                }
+        viewModel.showErrorHud
+            .map { //[weak self] in
+                ErrorMessage.showErrorHud(with: $0)
             }
-            .subscribe()
+            .drive()
             .disposed(by: disposeBag)
     }
     
@@ -110,13 +109,5 @@ extension AlbumViewController {
             activityIndicator.stopAnimating()
             activityIndicator.removeFromSuperview()
         }
-    }
-}
-
-// MARK: - Privates
-
-extension AlbumViewController {
-    fileprivate func showErrorPopup() {
-        self.presentSimpleAlert(title: "Error", message: "Error occured.")
     }
 }

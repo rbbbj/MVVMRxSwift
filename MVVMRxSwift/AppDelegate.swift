@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         print("Realm location: ", Realm.Configuration.defaultConfiguration.fileURL!)
         
+        ReachabilityManager.sharedInstance.observeReachability()
+        
         return true
     }
 

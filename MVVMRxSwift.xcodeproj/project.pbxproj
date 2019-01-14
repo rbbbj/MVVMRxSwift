@@ -38,8 +38,10 @@
 		67F859A121EA6BFE00A1953B /* SegueHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F8599D21EA6BFE00A1953B /* SegueHandler.swift */; };
 		67F859A221EA6BFE00A1953B /* UIAlertController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F8599E21EA6BFE00A1953B /* UIAlertController+Additions.swift */; };
 		67F859A721EA707000A1953B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67F859A921EA707000A1953B /* Localizable.strings */; };
+		67F859E821EB647400A1953B /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F859E721EB647400A1953B /* ReachabilityManager.swift */; };
 		A695B4B835A74D8812D74545 /* Pods_MVVMRxSwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFCBDCC6C9CA67B300BDF55 /* Pods_MVVMRxSwiftUITests.framework */; };
 		C3034B1D244935A926146E10 /* Pods_MVVMRxSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A70FE24B059C46B8B026E1 /* Pods_MVVMRxSwiftTests.framework */; };
+		D3536B2C21EC7CCE0020B294 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3536B2B21EC7CCE0020B294 /* ErrorMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,9 +104,11 @@
 		67F859A421EA6EF900A1953B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		67F859A821EA707000A1953B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		67F859AA21EA707D00A1953B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		67F859E721EB647400A1953B /* ReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		7E2FED9E4C63E487C6E45806 /* Pods-MVVMRxSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMRxSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMRxSwift/Pods-MVVMRxSwift.release.xcconfig"; sourceTree = "<group>"; };
 		8CFCBDCC6C9CA67B300BDF55 /* Pods_MVVMRxSwiftUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMRxSwiftUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A70FE24B059C46B8B026E1 /* Pods_MVVMRxSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMRxSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3536B2B21EC7CCE0020B294 /* ErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		D6BE7B943C5461F25464F50B /* Pods-MVVMRxSwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMRxSwiftUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMRxSwiftUITests/Pods-MVVMRxSwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D87E387F3D86026143E90322 /* Pods-MVVMRxSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMRxSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMRxSwift/Pods-MVVMRxSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		F969EB09BE7FD9B6A6563F56 /* Pods_MVVMRxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMRxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,6 +219,8 @@
 				643D98DB215A3C0C00A4EFA2 /* HTTPClientLayer.swift */,
 				643D98DA215A3C0C00A4EFA2 /* URLRequestCreator.swift */,
 				643D98D7215A3C0C00A4EFA2 /* Error.swift */,
+				D3536B2B21EC7CCE0020B294 /* ErrorMessage.swift */,
+				67F859E721EB647400A1953B /* ReachabilityManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -558,6 +564,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -568,6 +575,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -635,6 +643,7 @@
 				643D98D5215A3BCD00A4EFA2 /* AlbumsViewController.swift in Sources */,
 				643D98DC215A3C0C00A4EFA2 /* Error.swift in Sources */,
 				67F8598921E9281700A1953B /* Album.swift in Sources */,
+				D3536B2C21EC7CCE0020B294 /* ErrorMessage.swift in Sources */,
 				67F859A121EA6BFE00A1953B /* SegueHandler.swift in Sources */,
 				67F8598721E927EC00A1953B /* RMAlbum.swift in Sources */,
 				643D98D2215A3BCD00A4EFA2 /* BindingExtensions.swift in Sources */,
@@ -653,6 +662,7 @@
 				643D9894215A3AA100A4EFA2 /* AppDelegate.swift in Sources */,
 				67F8598B21E9283800A1953B /* Album+Mapping.swift in Sources */,
 				643D98E0215A3C0C00A4EFA2 /* HTTPClientLayer.swift in Sources */,
+				67F859E821EB647400A1953B /* ReachabilityManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -842,7 +852,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5LEQ4G2BEZ;
+				DEVELOPMENT_TEAM = 9WVXMKT8E7;
 				INFOPLIST_FILE = MVVMRxSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -861,7 +871,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5LEQ4G2BEZ;
+				DEVELOPMENT_TEAM = 9WVXMKT8E7;
 				INFOPLIST_FILE = MVVMRxSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
