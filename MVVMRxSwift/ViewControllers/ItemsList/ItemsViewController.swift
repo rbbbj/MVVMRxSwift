@@ -3,12 +3,12 @@ import RxSwift
 import RxCocoa
 import SwiftMessages
 
-class AlbumsViewController: UIViewController {
+class ItemsViewController: UIViewController {
     @IBOutlet fileprivate weak var tableView: UITableView!
     @IBOutlet fileprivate weak var searchBar: UISearchBar!
     
     private var album: Album? = nil
-    private let viewModel: AlbumsViewModel = AlbumsViewModel(listInteractor: DependanciesProvider.shared.getListInteractor(), deleteInteractor: DependanciesProvider.shared.getDeleteInteractor())
+    private let viewModel: ItemsViewModel = ItemsViewModel(listInteractor: DependanciesProvider.shared.getListInteractor(), deleteInteractor: DependanciesProvider.shared.getDeleteInteractor())
     private let disposeBag = DisposeBag()
     private let refreshControl = UIRefreshControl()
     
@@ -47,7 +47,7 @@ class AlbumsViewController: UIViewController {
 
 // MARK: - rx
 
-extension AlbumsViewController {
+extension ItemsViewController {
     fileprivate func setupNavigationBar() {
         navigationItem.leftBarButtonItem = editButtonItem
     }
@@ -78,7 +78,7 @@ extension AlbumsViewController {
     fileprivate func bindViewModel() {
         viewModel
             .albumCells
-            .bind(to: tableView.rx.items(cellIdentifier: "AlbumsTableCell", cellType: AlbumsTableCell.self)) { row, element, cell in
+            .bind(to: tableView.rx.items(cellIdentifier: "ItemsTableCell", cellType: ItemsTableCell.self)) { row, element, cell in
                 cell.configure(with: element)
             }
             .disposed(by: disposeBag)
@@ -134,7 +134,7 @@ extension AlbumsViewController {
 
 // MARK: - UITableViewDelegate
 
-extension AlbumsViewController: UITableViewDelegate {
+extension ItemsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
@@ -142,7 +142,7 @@ extension AlbumsViewController: UITableViewDelegate {
 
 // MARK: - Segues
 
-extension AlbumsViewController: SegueHandler {
+extension ItemsViewController: SegueHandler {
     enum SegueIdentifier: String {
         case
         albumsToAddAlbumSegue
@@ -153,16 +153,16 @@ extension AlbumsViewController: SegueHandler {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch identifierForSegue(segue: segue) {
         case .albumsToAddAlbumSegue:
-            if let controller = segue.destination as? AlbumViewController {
-                controller.viewModel = AddAlbumViewModel(dependency: (
+            if let controller = segue.destination as? ItemDetailsViewController {
+                controller.viewModel = AddItemViewModel(dependency: (
                     addInteractor: DependanciesProvider.shared.getAddInteractor(),
                     validationService: ValidationService()
                 ))
             }
         case .albumToUpdateAlbumSegue:
-            if let controller = segue.destination as? AlbumViewController {
+            if let controller = segue.destination as? ItemDetailsViewController {
                 guard let album = album else { return }
-                controller.viewModel = UpdateAlbumViewModel(album: album,
+                controller.viewModel = UpdateItemViewModel(album: album,
                                                             dependency: (updateInteractor: DependanciesProvider.shared.getUpdateInteractor(),
                                                                          validationService: ValidationService()))
             }

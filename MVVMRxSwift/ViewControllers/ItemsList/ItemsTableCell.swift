@@ -1,6 +1,6 @@
 import UIKit
 
-class AlbumsTableCell: UITableViewCell {
+class ItemsTableCell: UITableViewCell {
     @IBOutlet fileprivate weak var userIdLabel: UILabel!
     @IBOutlet fileprivate weak var titleLabel: UILabel!
     

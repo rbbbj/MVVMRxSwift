@@ -2,7 +2,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class AlbumsViewModel {
+final class ItemsViewModel {
     var albumCells: Observable<[Album]> {
         return displayCells.asObservable()
     }

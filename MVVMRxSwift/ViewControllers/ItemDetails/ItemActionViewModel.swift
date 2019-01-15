@@ -2,7 +2,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol AlbumActionViewModel {
+protocol ItemActionViewModel {
     var userid: Variable<String> { get }
     var title: Variable<String> { get }
     var validatedUserId: Driver<ValidationResult> { get }

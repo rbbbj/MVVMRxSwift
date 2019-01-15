@@ -32,23 +32,23 @@
 		67F85A1521ED26A400A1953B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F85A1421ED26A400A1953B /* Network.swift */; };
 		67F85A1721ED299300A1953B /* RealmStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F85A1621ED299300A1953B /* RealmStore.swift */; };
 		67F85A1921ED4AAA00A1953B /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F85A1821ED4AAA00A1953B /* HTTPClient.swift */; };
+		67F85A1D21EE45DE00A1953B /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F85A1C21EE45DE00A1953B /* ItemsViewController.swift */; };
+		67F85A1F21EE463600A1953B /* ItemsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F85A1E21EE463600A1953B /* ItemsViewModel.swift */; };
+		67F85A2121EE46AD00A1953B /* ItemsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F85A2021EE46AD00A1953B /* ItemsTableCell.swift */; };
+		67F85A2321EE475700A1953B /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F85A2221EE475700A1953B /* ItemDetailsViewController.swift */; };
+		67F85A2521EE47B300A1953B /* ItemActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F85A2421EE47B300A1953B /* ItemActionViewModel.swift */; };
+		67F85A2721EE481200A1953B /* AddItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F85A2621EE481200A1953B /* AddItemViewModel.swift */; };
+		67F85A2921EE485B00A1953B /* UpdateItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F85A2821EE485B00A1953B /* UpdateItemViewModel.swift */; };
 		A695B4B835A74D8812D74545 /* Pods_MVVMRxSwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFCBDCC6C9CA67B300BDF55 /* Pods_MVVMRxSwiftUITests.framework */; };
 		C3034B1D244935A926146E10 /* Pods_MVVMRxSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A70FE24B059C46B8B026E1 /* Pods_MVVMRxSwiftTests.framework */; };
 		D31284D921EE0EFB006E2FDF /* DependanciesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31284D821EE0EFB006E2FDF /* DependanciesProvider.swift */; };
-		D31284E121EE0FFC006E2FDF /* AlbumsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31284DB21EE0FFC006E2FDF /* AlbumsTableCell.swift */; };
-		D31284E221EE0FFC006E2FDF /* AlbumsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31284DC21EE0FFC006E2FDF /* AlbumsViewModel.swift */; };
-		D31284E321EE0FFC006E2FDF /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31284DD21EE0FFC006E2FDF /* AlbumsViewController.swift */; };
 		D31284E421EE0FFC006E2FDF /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31284DF21EE0FFC006E2FDF /* ListInteractor.swift */; };
 		D31284E521EE0FFC006E2FDF /* DeleteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31284E021EE0FFC006E2FDF /* DeleteInteractor.swift */; };
-		D31284EF21EE1045006E2FDF /* AddAlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31284E821EE1045006E2FDF /* AddAlbumViewModel.swift */; };
-		D31284F021EE1045006E2FDF /* UpdateAlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31284E921EE1045006E2FDF /* UpdateAlbumViewModel.swift */; };
-		D31284F121EE1045006E2FDF /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31284EA21EE1045006E2FDF /* AlbumViewController.swift */; };
 		D31284F221EE1045006E2FDF /* UpdateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31284EC21EE1045006E2FDF /* UpdateInteractor.swift */; };
 		D31284F321EE1045006E2FDF /* AddInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31284ED21EE1045006E2FDF /* AddInteractor.swift */; };
 		D31284FB21EE2BD5006E2FDF /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31284F721EE2BD5006E2FDF /* Repository.swift */; };
 		D31284FC21EE2BD5006E2FDF /* Album+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31284F921EE2BD5006E2FDF /* Album+Mapping.swift */; };
 		D31284FD21EE2BD5006E2FDF /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31284FA21EE2BD5006E2FDF /* Album.swift */; };
-		D31284FF21EE31D4006E2FDF /* AlbumActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31284FE21EE31D4006E2FDF /* AlbumActionViewModel.swift */; };
 		D3536B6621EDF5720020B294 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3536B6521EDF5720020B294 /* Service.swift */; };
 /* End PBXBuildFile section */
 
@@ -106,24 +106,24 @@
 		67F85A1421ED26A400A1953B /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		67F85A1621ED299300A1953B /* RealmStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmStore.swift; sourceTree = "<group>"; };
 		67F85A1821ED4AAA00A1953B /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		67F85A1C21EE45DE00A1953B /* ItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
+		67F85A1E21EE463600A1953B /* ItemsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsViewModel.swift; sourceTree = "<group>"; };
+		67F85A2021EE46AD00A1953B /* ItemsTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsTableCell.swift; sourceTree = "<group>"; };
+		67F85A2221EE475700A1953B /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
+		67F85A2421EE47B300A1953B /* ItemActionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemActionViewModel.swift; sourceTree = "<group>"; };
+		67F85A2621EE481200A1953B /* AddItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewModel.swift; sourceTree = "<group>"; };
+		67F85A2821EE485B00A1953B /* UpdateItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateItemViewModel.swift; sourceTree = "<group>"; };
 		7E2FED9E4C63E487C6E45806 /* Pods-MVVMRxSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMRxSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMRxSwift/Pods-MVVMRxSwift.release.xcconfig"; sourceTree = "<group>"; };
 		8CFCBDCC6C9CA67B300BDF55 /* Pods_MVVMRxSwiftUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMRxSwiftUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A70FE24B059C46B8B026E1 /* Pods_MVVMRxSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMRxSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D31284D821EE0EFB006E2FDF /* DependanciesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependanciesProvider.swift; sourceTree = "<group>"; };
-		D31284DB21EE0FFC006E2FDF /* AlbumsTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsTableCell.swift; sourceTree = "<group>"; };
-		D31284DC21EE0FFC006E2FDF /* AlbumsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsViewModel.swift; sourceTree = "<group>"; };
-		D31284DD21EE0FFC006E2FDF /* AlbumsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
 		D31284DF21EE0FFC006E2FDF /* ListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListInteractor.swift; sourceTree = "<group>"; };
 		D31284E021EE0FFC006E2FDF /* DeleteInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteInteractor.swift; sourceTree = "<group>"; };
-		D31284E821EE1045006E2FDF /* AddAlbumViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlbumViewModel.swift; sourceTree = "<group>"; };
-		D31284E921EE1045006E2FDF /* UpdateAlbumViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateAlbumViewModel.swift; sourceTree = "<group>"; };
-		D31284EA21EE1045006E2FDF /* AlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		D31284EC21EE1045006E2FDF /* UpdateInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateInteractor.swift; sourceTree = "<group>"; };
 		D31284ED21EE1045006E2FDF /* AddInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInteractor.swift; sourceTree = "<group>"; };
 		D31284F721EE2BD5006E2FDF /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		D31284F921EE2BD5006E2FDF /* Album+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Album+Mapping.swift"; sourceTree = "<group>"; };
 		D31284FA21EE2BD5006E2FDF /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
-		D31284FE21EE31D4006E2FDF /* AlbumActionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumActionViewModel.swift; sourceTree = "<group>"; };
 		D3536B6521EDF5720020B294 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		D6BE7B943C5461F25464F50B /* Pods-MVVMRxSwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMRxSwiftUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMRxSwiftUITests/Pods-MVVMRxSwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D87E387F3D86026143E90322 /* Pods-MVVMRxSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMRxSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMRxSwift/Pods-MVVMRxSwift.debug.xcconfig"; sourceTree = "<group>"; };
@@ -340,9 +340,9 @@
 			isa = PBXGroup;
 			children = (
 				D31284DE21EE0FFC006E2FDF /* Interactors */,
-				D31284DD21EE0FFC006E2FDF /* AlbumsViewController.swift */,
-				D31284DC21EE0FFC006E2FDF /* AlbumsViewModel.swift */,
-				D31284DB21EE0FFC006E2FDF /* AlbumsTableCell.swift */,
+				67F85A1C21EE45DE00A1953B /* ItemsViewController.swift */,
+				67F85A1E21EE463600A1953B /* ItemsViewModel.swift */,
+				67F85A2021EE46AD00A1953B /* ItemsTableCell.swift */,
 			);
 			path = ItemsList;
 			sourceTree = "<group>";
@@ -360,10 +360,10 @@
 			isa = PBXGroup;
 			children = (
 				D31284EB21EE1045006E2FDF /* Interactors */,
-				D31284EA21EE1045006E2FDF /* AlbumViewController.swift */,
-				D31284FE21EE31D4006E2FDF /* AlbumActionViewModel.swift */,
-				D31284E821EE1045006E2FDF /* AddAlbumViewModel.swift */,
-				D31284E921EE1045006E2FDF /* UpdateAlbumViewModel.swift */,
+				67F85A2221EE475700A1953B /* ItemDetailsViewController.swift */,
+				67F85A2421EE47B300A1953B /* ItemActionViewModel.swift */,
+				67F85A2621EE481200A1953B /* AddItemViewModel.swift */,
+				67F85A2821EE485B00A1953B /* UpdateItemViewModel.swift */,
 			);
 			path = ItemDetails;
 			sourceTree = "<group>";
@@ -725,18 +725,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D31284EF21EE1045006E2FDF /* AddAlbumViewModel.swift in Sources */,
 				67F85A0D21ED265D00A1953B /* ReachabilityManager.swift in Sources */,
 				67F8599F21EA6BFE00A1953B /* UIViewController+Ext.swift in Sources */,
-				D31284E121EE0FFC006E2FDF /* AlbumsTableCell.swift in Sources */,
+				67F85A2121EE46AD00A1953B /* ItemsTableCell.swift in Sources */,
 				D31284E421EE0FFC006E2FDF /* ListInteractor.swift in Sources */,
 				67F85A1521ED26A400A1953B /* Network.swift in Sources */,
 				D31284FB21EE2BD5006E2FDF /* Repository.swift in Sources */,
 				67F859A121EA6BFE00A1953B /* SegueHandler.swift in Sources */,
+				67F85A2521EE47B300A1953B /* ItemActionViewModel.swift in Sources */,
 				67F85A1321ED265D00A1953B /* Configuration.swift in Sources */,
 				67F8598721E927EC00A1953B /* RMAlbum.swift in Sources */,
 				67F85A0E21ED265D00A1953B /* Error.swift in Sources */,
 				67F85A0F21ED265D00A1953B /* ErrorMessage.swift in Sources */,
+				67F85A2321EE475700A1953B /* ItemDetailsViewController.swift in Sources */,
 				643D98D2215A3BCD00A4EFA2 /* BindingExtensions.swift in Sources */,
 				67F859A021EA6BFE00A1953B /* Observable+Ext.swift in Sources */,
 				67F85A0C21ED265D00A1953B /* URLRequestCreator.swift in Sources */,
@@ -744,19 +745,18 @@
 				67F85A1921ED4AAA00A1953B /* HTTPClient.swift in Sources */,
 				643D98D6215A3BCD00A4EFA2 /* ValidationService.swift in Sources */,
 				67F859F121ED064600A1953B /* DetailsServiceMock.swift in Sources */,
+				67F85A2921EE485B00A1953B /* UpdateItemViewModel.swift in Sources */,
 				D31284D921EE0EFB006E2FDF /* DependanciesProvider.swift in Sources */,
 				D3536B6621EDF5720020B294 /* Service.swift in Sources */,
 				D31284F321EE1045006E2FDF /* AddInteractor.swift in Sources */,
 				D31284FD21EE2BD5006E2FDF /* Album.swift in Sources */,
+				67F85A2721EE481200A1953B /* AddItemViewModel.swift in Sources */,
 				67F859A221EA6BFE00A1953B /* UIAlertController+Additions.swift in Sources */,
 				67F8599221E9369600A1953B /* Realm+Ext.swift in Sources */,
+				67F85A1F21EE463600A1953B /* ItemsViewModel.swift in Sources */,
+				67F85A1D21EE45DE00A1953B /* ItemsViewController.swift in Sources */,
 				D31284F221EE1045006E2FDF /* UpdateInteractor.swift in Sources */,
-				D31284FF21EE31D4006E2FDF /* AlbumActionViewModel.swift in Sources */,
-				D31284E221EE0FFC006E2FDF /* AlbumsViewModel.swift in Sources */,
-				D31284E321EE0FFC006E2FDF /* AlbumsViewController.swift in Sources */,
-				D31284F021EE1045006E2FDF /* UpdateAlbumViewModel.swift in Sources */,
 				D31284E521EE0FFC006E2FDF /* DeleteInteractor.swift in Sources */,
-				D31284F121EE1045006E2FDF /* AlbumViewController.swift in Sources */,
 				D31284FC21EE2BD5006E2FDF /* Album+Mapping.swift in Sources */,
 				643D9894215A3AA100A4EFA2 /* AppDelegate.swift in Sources */,
 			);

@@ -2,7 +2,7 @@ import UIKit
 import RxSwift
 import NVActivityIndicatorView
 
-class AlbumViewController: UIViewController {
+class ItemDetailsViewController: UIViewController {
     @IBOutlet fileprivate weak var userIdTextField: UITextField!
     @IBOutlet fileprivate weak var titleTextField: UITextField!
     @IBOutlet fileprivate weak var submitBtn: UIButton!
@@ -21,7 +21,7 @@ class AlbumViewController: UIViewController {
         return activityIndicator
     }()
 
-    var viewModel: AlbumActionViewModel?
+    var viewModel: ItemActionViewModel?
     
     fileprivate let disposeBag = DisposeBag()
 
@@ -39,7 +39,7 @@ class AlbumViewController: UIViewController {
 
 // MARK: - rx
 
-extension AlbumViewController {
+extension ItemDetailsViewController {
     fileprivate func bindViewModel() {
         guard let viewModel = viewModel else {
             return

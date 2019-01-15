@@ -2,7 +2,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class UpdateAlbumViewModel : AlbumActionViewModel {
+final class AddItemViewModel: ItemActionViewModel {
     // Protocol (should be let so can't be in protocol extension)
     let userid = Variable<String>("")
     let title = Variable<String>("")
@@ -24,16 +24,12 @@ final class UpdateAlbumViewModel : AlbumActionViewModel {
             .asDriver(onErrorJustReturn: "")
     }
     private let errorMessage = Variable<String>("")
-    
     private let disposeBag = DisposeBag()
     private let loadInProgress = Variable<Bool>(false)
-    private let updateInteractor: UpdateInteractor
+    private let addInteractor: AddInteractor
     
-    init(album: Album, dependency: (updateInteractor: UpdateInteractor, validationService: ValidationService)) {
-        self.updateInteractor = dependency.updateInteractor
-        
-        userid.value = String(album.userId ?? -1)
-        title.value = String(album.title ?? "")
+    init(dependency: (addInteractor: AddInteractor, validationService: ValidationService)) {
+        self.addInteractor = dependency.addInteractor
         
         validatedUserId = userid.asObservable()
             .map { userid in
@@ -45,29 +41,30 @@ final class UpdateAlbumViewModel : AlbumActionViewModel {
             .map { title in
                 return dependency.validationService.validateTitle(title)
             }
-            .asDriver(onErrorJustReturn: .failed(message: "Please check your entry."))
+        .asDriver(onErrorJustReturn: .failed(message: "Please check your entry."))
         
         submitButtonEnabled = Driver.combineLatest(
-            validatedUserId, validatedTitle
+            validatedUserId,
+            validatedTitle
         ) { userId, title in
             userId.isValid && title.isValid
             }
             .distinctUntilChanged()
-            .asDriver(onErrorJustReturn: false)
         
         submitButtonTap
             .subscribe(onNext: { [weak self] in
                 guard let `self` = self else { return }
-                self.update(album: album)
+                self.addAlbum()
                 }
             )
             .disposed(by: disposeBag)
     }
     
-    private func update(album: Album) {
+    private func addAlbum() {
         loadInProgress.value = true
-        let newAlbum = Album(userId: Int(userid.value) ?? 0, id: album.id, title: title.value)
-        updateInteractor.request(currentAlbum: album, with: newAlbum)
+        let id = RealmStore.shared.currentCount() + 1
+        let album = Album(userId: Int(userid.value) ?? 0, id: id, title: title.value)
+        addInteractor.request(album: album)
             .subscribe { [weak self] completable in
                 guard let `self` = self else { return }
                 switch completable {
