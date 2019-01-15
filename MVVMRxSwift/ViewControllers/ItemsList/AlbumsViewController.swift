@@ -8,18 +8,19 @@ class AlbumsViewController: UIViewController {
     @IBOutlet fileprivate weak var searchBar: UISearchBar!
     
     private var album: Album? = nil
-//    private let viewModel: AlbumsViewModel = AlbumsViewModel(network: Network())
-    private let viewModel: AlbumsViewModel = AlbumsViewModel(listInteractor: DependanciesProvider.shared.getListInteractor(), deleteInteractor: DependanciesProvider.shared.getDeleteInteractor()) //rbb
+    private let viewModel: AlbumsViewModel = AlbumsViewModel(listInteractor: DependanciesProvider.shared.getListInteractor(), deleteInteractor: DependanciesProvider.shared.getDeleteInteractor())
     private let disposeBag = DisposeBag()
     private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.rx.setDelegate(self).disposed(by: disposeBag)
+        
         setupNavigationBar()
         setupSearchBar()
         setupRefreshControl()
-        setupExpandingCell()
+//        setupExpandingCell() //rbb
         bindViewModel()
         setupCellTapHandling()
         setupCellDeleting()
@@ -75,12 +76,12 @@ extension AlbumsViewController {
             .disposed(by: disposeBag)
     }
     
-    fileprivate func setupExpandingCell() {
-        tableView.estimatedRowHeight = 44.0
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.rx.setDelegate(self)
-            .disposed(by: disposeBag)
-    }
+    //rbb
+//    fileprivate func setupExpandingCell() {
+//        tableView.estimatedRowHeight = 44.0
+//        tableView.rowHeight = UITableView.automaticDimension
+//        tableView.rx.setDelegate(self).disposed(by: disposeBag)
+//    }
     
     fileprivate func bindViewModel() {
         viewModel

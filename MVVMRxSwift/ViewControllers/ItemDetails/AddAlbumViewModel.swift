@@ -47,8 +47,7 @@ final class AddAlbumViewModel: AlbumViewModel {
             validatedUserId,
             validatedTitle
         ) { userId, title in
-            userId.isValid &&
-                title.isValid
+            userId.isValid && title.isValid
             }
             .distinctUntilChanged()
         

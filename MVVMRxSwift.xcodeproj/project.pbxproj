@@ -348,9 +348,9 @@
 			isa = PBXGroup;
 			children = (
 				D31284DE21EE0FFC006E2FDF /* Interactors */,
-				D31284DB21EE0FFC006E2FDF /* AlbumsTableCell.swift */,
-				D31284DC21EE0FFC006E2FDF /* AlbumsViewModel.swift */,
 				D31284DD21EE0FFC006E2FDF /* AlbumsViewController.swift */,
+				D31284DC21EE0FFC006E2FDF /* AlbumsViewModel.swift */,
+				D31284DB21EE0FFC006E2FDF /* AlbumsTableCell.swift */,
 			);
 			path = ItemsList;
 			sourceTree = "<group>";
@@ -368,10 +368,10 @@
 			isa = PBXGroup;
 			children = (
 				D31284EB21EE1045006E2FDF /* Interactors */,
+				D31284EA21EE1045006E2FDF /* AlbumViewController.swift */,
 				D31284E721EE1045006E2FDF /* AlbumViewModel.swift */,
 				D31284E821EE1045006E2FDF /* AddAlbumViewModel.swift */,
 				D31284E921EE1045006E2FDF /* UpdateAlbumViewModel.swift */,
-				D31284EA21EE1045006E2FDF /* AlbumViewController.swift */,
 			);
 			path = ItemDetails;
 			sourceTree = "<group>";
@@ -396,10 +396,10 @@
 		D3536B5921EDE8E60020B294 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				D3536B5A21EDE8E60020B294 /* Post */,
-				D3536B5B21EDE8E60020B294 /* Comment */,
 				D3536B5C21EDE8E60020B294 /* Repository.swift */,
 				D3536B5D21EDE8E60020B294 /* Album */,
+				D3536B5A21EDE8E60020B294 /* Post */,
+				D3536B5B21EDE8E60020B294 /* Comment */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
