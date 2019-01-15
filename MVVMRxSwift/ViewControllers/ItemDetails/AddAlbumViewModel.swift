@@ -26,10 +26,10 @@ final class AddAlbumViewModel: AlbumViewModel {
     private let errorMessage = Variable<String>("")
     private let disposeBag = DisposeBag()
     private let loadInProgress = Variable<Bool>(false)
-    private let api: API
+    private let addInteractor: AddInteractor
     
-    init(dependency: (API: API, validationService: ValidationService)) {
-        self.api = dependency.API
+    init(dependency: (addInteractor: AddInteractor, validationService: ValidationService)) {
+        self.addInteractor = dependency.addInteractor
         
         validatedUserId = userid.asObservable()
             .map { userid in
@@ -63,21 +63,20 @@ final class AddAlbumViewModel: AlbumViewModel {
     
     private func addAlbum() {
         loadInProgress.value = true
-        let id = StorageLayer.shared.currentCount() + 1
+        let id = RealmStore.shared.currentCount() + 1
         let album = Album(userId: Int(userid.value) ?? 0, id: id, title: title.value)
-        api.add(album: album)
-            .subscribe(
-                onSuccess: { [weak self] _ in
-                    guard let `self` = self else { return }
+        addInteractor.request(album: album)
+            .subscribe { [weak self] completable in
+                guard let `self` = self else { return }
+                switch completable {
+                case .completed:
                     self.loadInProgress.value = false
                     self.navigateBack.onNext(())
-                },
-                onError: { [weak self] error in
-                    guard let `self` = self else { return }
+                case .error(let error):
                     self.loadInProgress.value = false
                     self.errorMessage.value = error.localizedDescription
                 }
-            )
+            }
             .disposed(by: disposeBag)
     }
 }

@@ -17,11 +17,13 @@ final class AlbumsViewModel {
     private let errorMessage = Variable<String>("")
     private let cells = Variable<[Album]>([])
     private var displayCells = Variable<[Album]>([])
-    private let api: API
+    private let listInteractor: ListInteractor
+    private let deleteInteractor: DeleteInteractor
     private let disposeBag = DisposeBag()
     
-    init(API: API) {
-        self.api = API
+    init(listInteractor: ListInteractor, deleteInteractor: DeleteInteractor) {
+        self.listInteractor = listInteractor
+        self.deleteInteractor = deleteInteractor
         
         searchText.asObservable()
             .subscribe(onNext: { [weak self] searchText in
@@ -36,8 +38,8 @@ final class AlbumsViewModel {
     }
     
     func retrieveAllFromServer() {
-        api
-            .retrieveAllFromServer()
+        listInteractor
+            .request()
             .subscribe(
                 onSuccess: { [weak self] albums in
                     guard let `self` = self else { return }
@@ -57,7 +59,7 @@ final class AlbumsViewModel {
     }
     
     func retrieveAllFromDatabase() {
-        api
+        RealmStore.shared
             .retrieveAllFromDatabase()
             .subscribe(
                 onSuccess: { [weak self] albums in
@@ -76,19 +78,18 @@ final class AlbumsViewModel {
     }
     
     func delete(album: Album) {
-        api
-            .delete(album: album)
-            .subscribe(
-                onSuccess: { [weak self] _ in
-                    guard let `self` = self else { return }
+        deleteInteractor
+            .request(album: album)
+            .subscribe { [weak self] completable in
+                guard let `self` = self else { return }
+                switch completable {
+                case .completed:
                     self.retrieveAllFromDatabase()
                     self.errorMessage.value = ""
-                },
-                onError: { [weak self] error in
-                    guard let `self` = self else { return }
+                case .error(let error):
                     self.errorMessage.value = error.localizedDescription
                 }
-            )
+            }
             .disposed(by: disposeBag)
     }
 }

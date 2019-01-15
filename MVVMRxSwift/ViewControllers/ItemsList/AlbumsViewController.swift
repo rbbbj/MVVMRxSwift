@@ -4,11 +4,12 @@ import RxCocoa
 import SwiftMessages
 
 class AlbumsViewController: UIViewController {
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet fileprivate weak var tableView: UITableView!
+    @IBOutlet fileprivate weak var searchBar: UISearchBar!
     
     private var album: Album? = nil
-    private let viewModel: AlbumsViewModel = AlbumsViewModel(API: API())
+//    private let viewModel: AlbumsViewModel = AlbumsViewModel(network: Network())
+    private let viewModel: AlbumsViewModel = AlbumsViewModel(listInteractor: DependanciesProvider.shared.getListInteractor(), deleteInteractor: DependanciesProvider.shared.getDeleteInteractor()) //rbb
     private let disposeBag = DisposeBag()
     private let refreshControl = UIRefreshControl()
     
@@ -161,7 +162,7 @@ extension AlbumsViewController: SegueHandler {
         case .albumsToAddAlbumSegue:
             if let controller = segue.destination as? AlbumViewController {
                 controller.viewModel = AddAlbumViewModel(dependency: (
-                    API: API(),
+                    addInteractor: DependanciesProvider.shared.getAddInteractor(),
                     validationService: ValidationService()
                 ))
             }
@@ -169,7 +170,8 @@ extension AlbumsViewController: SegueHandler {
             if let controller = segue.destination as? AlbumViewController {
                 guard let album = album else { return }
                 controller.viewModel = UpdateAlbumViewModel(album: album,
-                                                            dependency: (API: API(), validationService: ValidationService()))
+                                                            dependency: (updateInteractor: DependanciesProvider.shared.getUpdateInteractor(),
+                                                                         validationService: ValidationService()))
             }
         }
     }

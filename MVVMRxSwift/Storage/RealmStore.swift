@@ -1,14 +1,16 @@
 import Foundation
 import Realm
 import RealmSwift
+import RxSwift
+import RxCocoa
 
-final class StorageLayer {
+final class RealmStore {
     // Instances of Realm thread-contained.
     // This queue is created once, so it's guaranteed all Realm instances are handled in this queue
     private let realmQueue: DispatchQueue
     
     // Singelton
-    static var shared = StorageLayer()
+    static var shared = RealmStore()
     private init() {
         realmQueue = DispatchQueue(label: "com.MVVMRxSwift.realm")
     }
@@ -73,5 +75,21 @@ final class StorageLayer {
         }
         
         return count
+    }
+    
+    func retrieveAllFromDatabase() -> Single<[Album]> {
+        return Single.create { observer in
+            var albums = [Album]()
+            guard let dbAlbums = RealmStore.shared.retrieveAll() else {
+                observer(.error(DataError.databaseError))
+                return Disposables.create {}
+            }
+            dbAlbums.forEach {
+                albums.append($0.asDomain())
+            }
+            observer(.success(albums))
+            
+            return Disposables.create {}
+        }
     }
 }

@@ -3,11 +3,11 @@ import RxSwift
 import NVActivityIndicatorView
 
 class AlbumViewController: UIViewController {
-    @IBOutlet weak var userIdTextField: UITextField!
-    @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var submitBtn: UIButton!
-    @IBOutlet weak var userIdValidationLabel: UILabel!
-    @IBOutlet weak var titleValidationLabel: UILabel!
+    @IBOutlet fileprivate weak var userIdTextField: UITextField!
+    @IBOutlet fileprivate weak var titleTextField: UITextField!
+    @IBOutlet fileprivate weak var submitBtn: UIButton!
+    @IBOutlet fileprivate weak var userIdValidationLabel: UILabel!
+    @IBOutlet fileprivate weak var titleValidationLabel: UILabel!
     
     fileprivate lazy var activityIndicator: NVActivityIndicatorView = {
         let screenSize = UIScreen.main.bounds
@@ -94,7 +94,7 @@ extension AlbumViewController {
             .disposed(by: disposeBag)
         
         viewModel.showErrorHud
-            .map { //[weak self] in
+            .map {
                 ErrorMessage.showErrorHud(with: $0)
             }
             .drive()

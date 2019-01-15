@@ -1,8 +1,8 @@
 import UIKit
 
 class AlbumsTableCell: UITableViewCell {
-    @IBOutlet weak var userIdLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet fileprivate weak var userIdLabel: UILabel!
+    @IBOutlet fileprivate weak var titleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

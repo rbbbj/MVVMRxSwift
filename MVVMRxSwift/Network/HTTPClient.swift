@@ -1,13 +1,13 @@
 import Foundation
 import RxSwift
 
-final class HTTPClientLayer {
+final class HTTPClient {
     typealias ErrorClosure = (_ error: Error?) -> ()
     typealias ItemsAndErrorClosure = (_ albums: [Album]?, _ error: Error?) -> ()
     typealias ItemAndErrorClosure = (_ album: Album?, _ error: Error?) -> ()
     
     // Singelton
-    static var shared = HTTPClientLayer()
+    static var shared = HTTPClient()
     fileprivate init() {}
     
     func processFetchRequest(completion: @escaping ItemsAndErrorClosure) {
@@ -138,4 +138,3 @@ final class HTTPClientLayer {
             }.resume()
     }
 }
-

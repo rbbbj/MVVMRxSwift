@@ -27,10 +27,10 @@ final class UpdateAlbumViewModel : AlbumViewModel {
     
     private let disposeBag = DisposeBag()
     private let loadInProgress = Variable<Bool>(false)
-    private let api: API
+    private let updateInteractor: UpdateInteractor
     
-    init(album: Album, dependency: (API: API, validationService: ValidationService)) {
-        self.api = API()
+    init(album: Album, dependency: (updateInteractor: UpdateInteractor, validationService: ValidationService)) {
+        self.updateInteractor = dependency.updateInteractor
         
         userid.value = String(album.userId ?? -1)
         title.value = String(album.title ?? "")
@@ -69,19 +69,18 @@ final class UpdateAlbumViewModel : AlbumViewModel {
     private func update(album: Album) {
         loadInProgress.value = true
         let newAlbum = Album(userId: Int(userid.value) ?? 0, id: album.id, title: title.value)
-        api.update(currentAlbum: album, with: newAlbum)
-            .subscribe(
-                onSuccess: { [weak self] _ in
-                    guard let `self` = self else { return }
+        updateInteractor.request(currentAlbum: album, with: newAlbum)
+            .subscribe { [weak self] completable in
+                guard let `self` = self else { return }
+                switch completable {
+                case .completed:
                     self.loadInProgress.value = false
                     self.navigateBack.onNext(())
-                },
-                onError: { [weak self] error in
-                    guard let `self` = self else { return }
+                case .error(let error):
                     self.loadInProgress.value = false
                     self.errorMessage.value = error.localizedDescription
                 }
-            )
+            }
             .disposed(by: disposeBag)
     }
 }

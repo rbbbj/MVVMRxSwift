@@ -3,7 +3,7 @@ import Reachability
 import RxSwift
 import RxCocoa
 
-final class API {
+final class Network {
     private var isOnline: Bool  {
         if let reachability = Reachability(), reachability.connection != .none {
             return true
@@ -11,12 +11,12 @@ final class API {
         return false
     }
     
-    func retrieveAllFromServer() -> Single<[Album]> {
+    func retrieveAll() -> Single<[Album]> {
         return Single.create{ [isOnline] observer in
             if !isOnline {
                 return Disposables.create {}
             } else {
-                HTTPClientLayer.shared.processFetchRequest() { result, error in
+                HTTPClient.shared.processFetchRequest() { result, error in
                     if let error = error {
                         observer(.error(error))
                         return
@@ -26,10 +26,10 @@ final class API {
                         return
                     }
                     
-                    StorageLayer.shared.removeAll()
+                    RealmStore.shared.removeAll()
                     result.forEach {
                         let album = $0
-                        StorageLayer.shared.add(album: album)
+                        RealmStore.shared.add(album: album)
                     }
                     
                     observer(.success(result))
@@ -40,46 +40,12 @@ final class API {
         }
     }
     
-    func retrieveAllFromDatabase() -> Single<[Album]> {
-        return Single.create { observer in
-            var albums = [Album]()
-            guard let dbAlbums = StorageLayer.shared.retrieveAll() else {
-                observer(.error(DataError.databaseError))
-                return Disposables.create {}
-            }
-            dbAlbums.forEach {
-                albums.append($0.asDomain())
-            }
-            observer(.success(albums))
-            return Disposables.create {}
-        }
-    }
-    
-    func delete(album: Album) -> Single<Void> {
-        return Single.create{ [isOnline] observer in
+    func add(album: Album) -> Completable {
+        return Completable.create{ [isOnline] observer in
             if !isOnline {
                 return Disposables.create {}
             } else {
-                HTTPClientLayer.shared.processDeleteRequest(for: album) { error in
-                    if let error = error {
-                        observer(.error(error))
-                        return
-                    }
-                    
-                    StorageLayer.shared.remove(album: album)
-                    observer(.success(()))
-                }
-            }
-            return Disposables.create {}
-        }
-    }
-    
-    func add(album: Album) -> Single<Void> {
-        return Single.create{ [isOnline] observer in
-            if !isOnline {
-                return Disposables.create {}
-            } else {
-                HTTPClientLayer.shared.processAddRequest(album: album) { result, error in
+                HTTPClient.shared.processAddRequest(album: album) { result, error in
                     if let error = error {
                         observer(.error(error))
                         return
@@ -89,20 +55,41 @@ final class API {
                         return
                     }
                     
-                    StorageLayer.shared.add(album: result)
-                    observer(.success(()))
+                    RealmStore.shared.add(album: result)
+                    observer(.completed)
                 }
             }
+            
             return Disposables.create {}
         }
     }
     
-    func update(currentAlbum: Album, with newAlbum: Album) -> Single<Album> {
-        return Single.create { [isOnline] observer in
+    func delete(album: Album) -> Completable {
+        return Completable.create{ [isOnline] observer in
             if !isOnline {
                 return Disposables.create {}
             } else {
-                HTTPClientLayer.shared.processUpdateRequest(currentAlbum: currentAlbum, with: newAlbum) { result, error in
+                HTTPClient.shared.processDeleteRequest(for: album) { error in
+                    if let error = error {
+                        observer(.error(error))
+                        return
+                    }
+                    
+                    //                    RealmStore.shared.remove(album: album) //rbb - crash
+                    observer(.completed)
+                }
+            }
+            
+            return Disposables.create {}
+        }
+    }
+    
+    func update(currentAlbum: Album, with newAlbum: Album) -> Completable {
+        return Completable.create { [isOnline] observer in
+            if !isOnline {
+                return Disposables.create {}
+            } else {
+                HTTPClient.shared.processUpdateRequest(currentAlbum: currentAlbum, with: newAlbum) { result, error in
                     if let error = error {
                         observer(.error(error))
                         return
@@ -113,8 +100,8 @@ final class API {
                     }
                     
                     let album = result
-                    StorageLayer.shared.update(album: album)
-                    observer(.success(album))
+                    RealmStore.shared.update(album: album)
+                    observer(.completed)
                 }
             }
             
