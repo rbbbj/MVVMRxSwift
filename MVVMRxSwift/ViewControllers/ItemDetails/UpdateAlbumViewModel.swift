@@ -2,7 +2,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class UpdateAlbumViewModel : AlbumViewModel {
+final class UpdateAlbumViewModel : AlbumActionViewModel {
     // Protocol (should be let so can't be in protocol extension)
     let userid = Variable<String>("")
     let title = Variable<String>("")
@@ -48,11 +48,9 @@ final class UpdateAlbumViewModel : AlbumViewModel {
             .asDriver(onErrorJustReturn: .failed(message: "Please check your entry."))
         
         submitButtonEnabled = Driver.combineLatest(
-            validatedUserId,
-            validatedTitle
+            validatedUserId, validatedTitle
         ) { userId, title in
-            userId.isValid &&
-                title.isValid
+            userId.isValid && title.isValid
             }
             .distinctUntilChanged()
             .asDriver(onErrorJustReturn: false)

@@ -21,7 +21,7 @@ class AlbumViewController: UIViewController {
         return activityIndicator
     }()
 
-    var viewModel: AlbumViewModel?
+    var viewModel: AlbumActionViewModel?
     
     fileprivate let disposeBag = DisposeBag()
 

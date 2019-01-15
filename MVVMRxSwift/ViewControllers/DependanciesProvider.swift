@@ -2,7 +2,7 @@ import Foundation
 import RxSwift
 
 final class DependanciesProvider: NSObject {
-    let useMock = true //false
+    let useMock = false
     
     fileprivate var placeholderRepository: Repository?
     fileprivate var placeholderService: Service?

@@ -2,7 +2,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class AddAlbumViewModel: AlbumViewModel {
+final class AddAlbumViewModel: AlbumActionViewModel {
     // Protocol (should be let so can't be in protocol extension)
     let userid = Variable<String>("")
     let title = Variable<String>("")

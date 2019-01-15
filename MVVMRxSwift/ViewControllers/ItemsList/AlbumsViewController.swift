@@ -20,7 +20,6 @@ class AlbumsViewController: UIViewController {
         setupNavigationBar()
         setupSearchBar()
         setupRefreshControl()
-//        setupExpandingCell() //rbb
         bindViewModel()
         setupCellTapHandling()
         setupCellDeleting()
@@ -75,13 +74,6 @@ extension AlbumsViewController {
             .subscribe()
             .disposed(by: disposeBag)
     }
-    
-    //rbb
-//    fileprivate func setupExpandingCell() {
-//        tableView.estimatedRowHeight = 44.0
-//        tableView.rowHeight = UITableView.automaticDimension
-//        tableView.rx.setDelegate(self).disposed(by: disposeBag)
-//    }
     
     fileprivate func bindViewModel() {
         viewModel
@@ -175,13 +167,5 @@ extension AlbumsViewController: SegueHandler {
                                                                          validationService: ValidationService()))
             }
         }
-    }
-}
-
-// MARK: - Privates
-
-extension AlbumsViewController {
-    @objc fileprivate func retryTapped() {
-        self.viewModel.retrieveAllFromServer()
     }
 }
