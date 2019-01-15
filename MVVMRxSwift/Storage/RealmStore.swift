@@ -14,12 +14,12 @@ final class RealmStore {
     private init() {
         realmQueue = DispatchQueue(label: "com.MVVMRxSwift.realm")
     }
-    
+
     func remove(album: Album) {
         realmQueue.async {
             if let realm = try? Realm() {
                 try? realm.write {
-                    realm.delete(album.asRealm())
+                    realm.delete(realm.objects(RMAlbum.self).filter("id=%@", album.id!))
                 }
             }
         }

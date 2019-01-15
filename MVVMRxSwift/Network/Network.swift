@@ -74,8 +74,7 @@ final class Network {
                         observer(.error(error))
                         return
                     }
-                    
-                    //                    RealmStore.shared.remove(album: album) //rbb - crash
+                    RealmStore.shared.remove(album: album)
                     observer(.completed)
                 }
             }
