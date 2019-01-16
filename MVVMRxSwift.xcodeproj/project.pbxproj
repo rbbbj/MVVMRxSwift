@@ -37,6 +37,7 @@
 		670BC12921EF9FC500B51B9A /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BC12121EF9FC500B51B9A /* HTTPClient.swift */; };
 		670BC12A21EF9FC500B51B9A /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BC12221EF9FC500B51B9A /* ErrorMessage.swift */; };
 		670BC12B21EF9FC500B51B9A /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BC12321EF9FC500B51B9A /* Configuration.swift */; };
+		670BC12D21EFA73000B51B9A /* ServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BC12C21EFA73000B51B9A /* ServiceMock.swift */; };
 		679DC55921EE555E000BDCB2 /* Storyboard+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679DC55821EE555E000BDCB2 /* Storyboard+Ext.swift */; };
 		679DC56B21EF01DA000BDCB2 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679DC56721EF01DA000BDCB2 /* ApplicationCoordinator.swift */; };
 		679DC56C21EF01DA000BDCB2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679DC56821EF01DA000BDCB2 /* Coordinator.swift */; };
@@ -47,7 +48,6 @@
 		67F8599F21EA6BFE00A1953B /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F8599B21EA6BFE00A1953B /* UIViewController+Ext.swift */; };
 		67F859A221EA6BFE00A1953B /* UIAlertController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F8599E21EA6BFE00A1953B /* UIAlertController+Additions.swift */; };
 		67F859A721EA707000A1953B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67F859A921EA707000A1953B /* Localizable.strings */; };
-		67F859F121ED064600A1953B /* DetailsServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F859F021ED064600A1953B /* DetailsServiceMock.swift */; };
 		67F85A1721ED299300A1953B /* RealmStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F85A1621ED299300A1953B /* RealmStore.swift */; };
 		A695B4B835A74D8812D74545 /* Pods_MVVMRxSwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFCBDCC6C9CA67B300BDF55 /* Pods_MVVMRxSwiftUITests.framework */; };
 		C3034B1D244935A926146E10 /* Pods_MVVMRxSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A70FE24B059C46B8B026E1 /* Pods_MVVMRxSwiftTests.framework */; };
@@ -112,6 +112,7 @@
 		670BC12121EF9FC500B51B9A /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		670BC12221EF9FC500B51B9A /* ErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		670BC12321EF9FC500B51B9A /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		670BC12C21EFA73000B51B9A /* ServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceMock.swift; sourceTree = "<group>"; };
 		679DC55821EE555E000BDCB2 /* Storyboard+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard+Ext.swift"; sourceTree = "<group>"; };
 		679DC56721EF01DA000BDCB2 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		679DC56821EF01DA000BDCB2 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -122,7 +123,6 @@
 		67F8599B21EA6BFE00A1953B /* UIViewController+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		67F8599E21EA6BFE00A1953B /* UIAlertController+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Additions.swift"; sourceTree = "<group>"; };
 		67F859A821EA707000A1953B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		67F859F021ED064600A1953B /* DetailsServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsServiceMock.swift; sourceTree = "<group>"; };
 		67F85A1621ED299300A1953B /* RealmStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmStore.swift; sourceTree = "<group>"; };
 		7E2FED9E4C63E487C6E45806 /* Pods-MVVMRxSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMRxSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMRxSwift/Pods-MVVMRxSwift.release.xcconfig"; sourceTree = "<group>"; };
 		8CFCBDCC6C9CA67B300BDF55 /* Pods_MVVMRxSwiftUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMRxSwiftUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,7 +193,6 @@
 				670BC11A21EF9FC500B51B9A /* Services */,
 				67F8598121E91FCF00A1953B /* Data */,
 				643D98E7215A3C4000A4EFA2 /* Storage */,
-				D3536B3C21EC92C70020B294 /* Mocks */,
 				643D98E1215A3C4000A4EFA2 /* Helpers */,
 				643D9893215A3AA100A4EFA2 /* AppDelegate.swift */,
 				643D989C215A3AA300A4EFA2 /* LaunchScreen.storyboard */,
@@ -300,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				670BC11B21EF9FC500B51B9A /* Service.swift */,
+				670BC12C21EFA73000B51B9A /* ServiceMock.swift */,
 				670BC11C21EF9FC500B51B9A /* Network */,
 			);
 			path = Services;
@@ -426,14 +426,6 @@
 				D31284FA21EE2BD5006E2FDF /* Album.swift */,
 			);
 			path = Album;
-			sourceTree = "<group>";
-		};
-		D3536B3C21EC92C70020B294 /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-				67F859F021ED064600A1953B /* DetailsServiceMock.swift */,
-			);
-			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -665,6 +657,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67F8599F21EA6BFE00A1953B /* UIViewController+Ext.swift in Sources */,
+				670BC12D21EFA73000B51B9A /* ServiceMock.swift in Sources */,
 				670BC11921EF9F4600B51B9A /* DependanciesProvider.swift in Sources */,
 				679DC56E21EF01DA000BDCB2 /* ItemsListCoordinator.swift in Sources */,
 				670BC12621EF9FC500B51B9A /* ReachabilityManager.swift in Sources */,
@@ -680,7 +673,6 @@
 				670BC12B21EF9FC500B51B9A /* Configuration.swift in Sources */,
 				670BC10D21EF9F4600B51B9A /* UpdateItemViewModel.swift in Sources */,
 				670BC12A21EF9FC500B51B9A /* ErrorMessage.swift in Sources */,
-				67F859F121ED064600A1953B /* DetailsServiceMock.swift in Sources */,
 				670BC10F21EF9F4600B51B9A /* AddInteractor.swift in Sources */,
 				670BC10B21EF9F4600B51B9A /* ItemDetailsViewController.swift in Sources */,
 				679DC56B21EF01DA000BDCB2 /* ApplicationCoordinator.swift in Sources */,
