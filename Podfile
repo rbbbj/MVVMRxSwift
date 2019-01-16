@@ -8,6 +8,7 @@ target 'MVVMRxSwift' do
   # Pods for MVVMRxSwift
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'RxKeyboard'
   pod 'RealmSwift'
   pod 'NVActivityIndicatorView'
   pod 'ReachabilitySwift'
