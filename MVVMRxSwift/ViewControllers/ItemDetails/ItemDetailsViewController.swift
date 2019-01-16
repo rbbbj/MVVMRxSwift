@@ -2,12 +2,20 @@ import UIKit
 import RxSwift
 import NVActivityIndicatorView
 
+protocol ItemdetailsViewControllerDelegate: class {
+    func popBack()
+    func cleanFromMemory()
+}
+
+
 class ItemDetailsViewController: UIViewController {
     @IBOutlet fileprivate weak var userIdTextField: UITextField!
     @IBOutlet fileprivate weak var titleTextField: UITextField!
     @IBOutlet fileprivate weak var submitBtn: UIButton!
     @IBOutlet fileprivate weak var userIdValidationLabel: UILabel!
     @IBOutlet fileprivate weak var titleValidationLabel: UILabel!
+    
+    weak var delegate: ItemdetailsViewControllerDelegate?
     
     fileprivate lazy var activityIndicator: NVActivityIndicatorView = {
         let screenSize = UIScreen.main.bounds
@@ -29,6 +37,13 @@ class ItemDetailsViewController: UIViewController {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
         bindViewModel()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if self.isMovingFromParent {
+            delegate?.cleanFromMemory()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -80,7 +95,7 @@ extension ItemDetailsViewController {
             .subscribe({ [weak self] _ in
                 guard let `self` = self else { return }
                 DispatchQueue.main.async {
-                    self.navigationController?.popViewController(animated: true)
+                    self.delegate?.popBack()
                 }
             })
             .disposed(by: disposeBag)
@@ -111,3 +126,6 @@ extension ItemDetailsViewController {
         }
     }
 }
+
+// For using storyboard in coordinator
+extension ItemDetailsViewController: StoryboardInstantiable {}

@@ -3,9 +3,16 @@ import RxSwift
 import RxCocoa
 import SwiftMessages
 
+protocol ItemsViewControllerDelegate: class {
+    func itemsViewControllerDidSelectItem(_ selectedItem: Album)
+     func itemsViewControllerDidPressAdd()
+}
+
 class ItemsViewController: UIViewController {
     @IBOutlet fileprivate weak var tableView: UITableView!
     @IBOutlet fileprivate weak var searchBar: UISearchBar!
+    
+    weak var delegate: ItemsViewControllerDelegate?
     
     private var album: Album? = nil
     private let viewModel: ItemsViewModel = ItemsViewModel(listInteractor: DependanciesProvider.shared.getListInteractor(), deleteInteractor: DependanciesProvider.shared.getDeleteInteractor())
@@ -14,9 +21,7 @@ class ItemsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
-        
         setupNavigationBar()
         setupSearchBar()
         setupRefreshControl()
@@ -49,6 +54,7 @@ class ItemsViewController: UIViewController {
 
 extension ItemsViewController {
     fileprivate func setupNavigationBar() {
+        navigationItem.largeTitleDisplayMode = .never
         navigationItem.leftBarButtonItem = editButtonItem
     }
     
@@ -105,8 +111,7 @@ extension ItemsViewController {
             .subscribe(
                 onNext: { [weak self] album in
                     guard let `self` = self else { return }
-                    self.album = album
-                    self.performSegueWithIdentifier(identifier: .albumToUpdateAlbumSegue, sender: self)
+                    self.delegate?.itemsViewControllerDidSelectItem(album)
                     if let selectedRowIndexPath = self.tableView.indexPathForSelectedRow {
                         self.tableView.deselectRow(at: selectedRowIndexPath, animated: true)
                     }
@@ -140,32 +145,5 @@ extension ItemsViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - Segues
-
-extension ItemsViewController: SegueHandler {
-    enum SegueIdentifier: String {
-        case
-        albumsToAddAlbumSegue
-        case
-        albumToUpdateAlbumSegue
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch identifierForSegue(segue: segue) {
-        case .albumsToAddAlbumSegue:
-            if let controller = segue.destination as? ItemDetailsViewController {
-                controller.viewModel = AddItemViewModel(dependency: (
-                    addInteractor: DependanciesProvider.shared.getAddInteractor(),
-                    validationService: ValidationService()
-                ))
-            }
-        case .albumToUpdateAlbumSegue:
-            if let controller = segue.destination as? ItemDetailsViewController {
-                guard let album = album else { return }
-                controller.viewModel = UpdateItemViewModel(album: album,
-                                                            dependency: (updateInteractor: DependanciesProvider.shared.getUpdateInteractor(),
-                                                                         validationService: ValidationService()))
-            }
-        }
-    }
-}
+// For using storyboard in coordinator
+extension ItemsViewController: StoryboardInstantiable {}
