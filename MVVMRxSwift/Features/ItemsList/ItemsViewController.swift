@@ -145,5 +145,13 @@ extension ItemsViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - UITableViewDelegate
+
+extension ItemsViewController {
+    @IBAction fileprivate func addPressed() {
+        delegate?.itemsViewControllerDidPressAdd()
+    }
+}
+
 // For using storyboard in coordinator
 extension ItemsViewController: StoryboardInstantiable {}

@@ -190,8 +190,8 @@
 			children = (
 				679DC56621EF01B8000BDCB2 /* Coordinators */,
 				670BC0F521EF9F4500B51B9A /* Features */,
-				670BC11A21EF9FC500B51B9A /* Services */,
 				67F8598121E91FCF00A1953B /* Data */,
+				670BC11A21EF9FC500B51B9A /* Services */,
 				643D98E7215A3C4000A4EFA2 /* Storage */,
 				643D98E1215A3C4000A4EFA2 /* Helpers */,
 				643D9893215A3AA100A4EFA2 /* AppDelegate.swift */,
@@ -244,8 +244,8 @@
 			isa = PBXGroup;
 			children = (
 				670BC10921EF9F4600B51B9A /* DependanciesProvider.swift */,
-				670BC0F621EF9F4500B51B9A /* ItemDetails */,
 				670BC10121EF9F4500B51B9A /* ItemsList */,
+				670BC0F621EF9F4500B51B9A /* ItemDetails */,
 				670BC0FF21EF9F4500B51B9A /* ValidationService.swift */,
 				670BC10021EF9F4500B51B9A /* BindingExtensions.swift */,
 			);
@@ -308,13 +308,13 @@
 		670BC11C21EF9FC500B51B9A /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				670BC12321EF9FC500B51B9A /* Configuration.swift */,
 				670BC11D21EF9FC500B51B9A /* URLRequestCreator.swift */,
-				670BC11E21EF9FC500B51B9A /* ReachabilityManager.swift */,
-				670BC11F21EF9FC500B51B9A /* Error.swift */,
 				670BC12021EF9FC500B51B9A /* Network.swift */,
 				670BC12121EF9FC500B51B9A /* HTTPClient.swift */,
+				670BC11F21EF9FC500B51B9A /* Error.swift */,
+				670BC11E21EF9FC500B51B9A /* ReachabilityManager.swift */,
 				670BC12221EF9FC500B51B9A /* ErrorMessage.swift */,
-				670BC12321EF9FC500B51B9A /* Configuration.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";

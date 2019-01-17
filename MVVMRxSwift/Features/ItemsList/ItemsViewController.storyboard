@@ -82,7 +82,11 @@
                         <viewLayoutGuide key="safeArea" id="mqJ-xS-LUY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Y5s-3m-oST">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="egm-Eh-l4B"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="egm-Eh-l4B">
+                            <connections>
+                                <action selector="addPressed" destination="xpf-Z6-eWo" id="Mxp-Yu-kpt"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
