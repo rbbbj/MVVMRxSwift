@@ -21,7 +21,6 @@ class ItemsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rx.setDelegate(self).disposed(by: disposeBag)
         setupNavigationBar()
         setupSearchBar()
         setupRefreshControl()
@@ -50,7 +49,7 @@ class ItemsViewController: UIViewController {
     }
 }
 
-// MARK: - rx
+// MARK: - Privates
 
 extension ItemsViewController {
     fileprivate func setupNavigationBar() {
@@ -97,16 +96,14 @@ extension ItemsViewController {
             .disposed(by: disposeBag)
         
         viewModel.showErrorHud
-            .map {
+            .drive(onNext: {
                 ErrorMessage.showErrorHud(with: $0)
-            }
-            .drive()
+            })
             .disposed(by: disposeBag)
     }
     
     fileprivate func setupCellTapHandling() {
-        tableView
-            .rx
+        tableView.rx
             .modelSelected(Album.self)
             .subscribe(
                 onNext: { [weak self] album in
@@ -121,8 +118,7 @@ extension ItemsViewController {
     }
     
     fileprivate func setupCellDeleting() {
-        tableView
-            .rx
+        tableView.rx
             .modelDeleted(Album.self)
             .subscribe(
                 onNext: { [weak self] album in
@@ -137,15 +133,7 @@ extension ItemsViewController {
     }
 }
 
-// MARK: - UITableViewDelegate
-
-extension ItemsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-}
-
-// MARK: - UITableViewDelegate
+// MARK: - IBAction
 
 extension ItemsViewController {
     @IBAction fileprivate func addPressed() {

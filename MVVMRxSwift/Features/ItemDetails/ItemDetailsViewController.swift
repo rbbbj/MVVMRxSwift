@@ -7,7 +7,6 @@ protocol ItemdetailsViewControllerDelegate: class {
     func cleanFromMemory()
 }
 
-
 class ItemDetailsViewController: UIViewController {
     @IBOutlet fileprivate weak var userIdTextField: UITextField!
     @IBOutlet fileprivate weak var titleTextField: UITextField!
@@ -41,6 +40,7 @@ class ItemDetailsViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        // Required to avoid memory leak
         if self.isMovingFromParent {
             delegate?.cleanFromMemory()
         }
@@ -52,7 +52,7 @@ class ItemDetailsViewController: UIViewController {
     }
 }
 
-// MARK: - rx
+// MARK: - Privates
 
 extension ItemDetailsViewController {
     fileprivate func bindViewModel() {
@@ -77,6 +77,7 @@ extension ItemDetailsViewController {
             .disposed(by: disposeBag)
         
         submitBtn.rx.tap
+            .take(1)
             .bind(to: viewModel.submitButtonTap)
             .disposed(by: disposeBag)
         
@@ -85,10 +86,10 @@ extension ItemDetailsViewController {
             .disposed(by: disposeBag)
         
         viewModel.showLoadingHud
-            .map { [weak self] in
+            .drive(onNext: { [weak self] in
                 self?.showLoadingHud(visible: $0)
-            }
-            .drive()
+                
+            })
             .disposed(by: disposeBag)
         
         viewModel.navigateBack.asObserver()
@@ -109,10 +110,9 @@ extension ItemDetailsViewController {
             .disposed(by: disposeBag)
         
         viewModel.showErrorHud
-            .map {
+            .drive(onNext: {
                 ErrorMessage.showErrorHud(with: $0)
-            }
-            .drive()
+            })
             .disposed(by: disposeBag)
     }
     
