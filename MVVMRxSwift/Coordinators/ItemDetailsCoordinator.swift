@@ -2,12 +2,12 @@ import UIKit
 import MessageUI
 
 class ItemDetailsCoordinator: Coordinator {
-    private let presenter: UINavigationController
+    private let navigationController: UINavigationController
     private var itemDetailsViewController: ItemDetailsViewController?
     private var viewModel: ItemActionViewModel
     
-    init(presenter: UINavigationController, viewModel: ItemActionViewModel) {
-        self.presenter = presenter
+    init(navigationController: UINavigationController, viewModel: ItemActionViewModel) {
+        self.navigationController = navigationController
         self.viewModel = viewModel
     }
 
@@ -16,14 +16,14 @@ class ItemDetailsCoordinator: Coordinator {
         itemDetailsViewController.delegate = self
         itemDetailsViewController.title = "Details"
         itemDetailsViewController.viewModel = viewModel
-        presenter.pushViewController(itemDetailsViewController, animated: true)
+        navigationController.pushViewController(itemDetailsViewController, animated: true)
         self.itemDetailsViewController = itemDetailsViewController
     }
 }
 
 extension ItemDetailsCoordinator: ItemdetailsViewControllerDelegate {
     func popBack() {
-        presenter.popViewController(animated: true)
+        navigationController.popViewController(animated: true)
         cleanFromMemory()
     }
     

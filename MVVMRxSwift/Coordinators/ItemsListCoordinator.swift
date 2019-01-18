@@ -1,19 +1,19 @@
 import UIKit
 
 class ItemsCoordinator: Coordinator {
-  private let presenter: UINavigationController
+  private let navigationController: UINavigationController
   private var itemsViewController: ItemsViewController?
   private var itemDetailsCoordinator: ItemDetailsCoordinator?
   
-  init(presenter: UINavigationController) {
-    self.presenter = presenter
+  init(navigationController: UINavigationController) {
+    self.navigationController = navigationController
   }
     
     func start() {
         let itemsViewController = ItemsViewController.instantiateViewController()
         itemsViewController.delegate = self
         itemsViewController.title = "List"
-        presenter.pushViewController(itemsViewController, animated: true)
+        navigationController.pushViewController(itemsViewController, animated: true)
         self.itemsViewController = itemsViewController
     }
 }
@@ -26,7 +26,7 @@ extension ItemsCoordinator: ItemsViewControllerDelegate {
             UpdateItemViewModel(album: selectedItem,
                                 dependency: (updateInteractor: DependanciesProvider.shared.getUpdateInteractor(),
                                              validationService: ValidationService()))
-        let itemsDetailsCoordinator = ItemDetailsCoordinator(presenter: presenter, viewModel: updateItemViewModel)
+        let itemsDetailsCoordinator = ItemDetailsCoordinator(navigationController: navigationController, viewModel: updateItemViewModel)
         itemsDetailsCoordinator.start()
         self.itemDetailsCoordinator = itemsDetailsCoordinator
     }
@@ -35,7 +35,7 @@ extension ItemsCoordinator: ItemsViewControllerDelegate {
         let addItemViewModel =
             AddItemViewModel(dependency: (addInteractor: DependanciesProvider.shared.getAddInteractor(),
                                           validationService: ValidationService()))
-        let itemsDetailsCoordinator = ItemDetailsCoordinator(presenter: presenter, viewModel: addItemViewModel)
+        let itemsDetailsCoordinator = ItemDetailsCoordinator(navigationController: navigationController, viewModel: addItemViewModel)
         itemsDetailsCoordinator.start()
         self.itemDetailsCoordinator = itemsDetailsCoordinator
     }
