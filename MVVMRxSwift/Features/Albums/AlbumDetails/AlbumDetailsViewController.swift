@@ -2,19 +2,19 @@ import UIKit
 import RxSwift
 import NVActivityIndicatorView
 
-protocol ItemdetailsViewControllerDelegate: class {
+protocol AlbumDetailsViewControllerDelegate: class {
     func popBack()
     func cleanFromMemory()
 }
 
-class ItemDetailsViewController: UIViewController {
+class AlbumDetailsViewController: UIViewController {
     @IBOutlet fileprivate weak var userIdTextField: UITextField!
     @IBOutlet fileprivate weak var titleTextField: UITextField!
     @IBOutlet fileprivate weak var submitBtn: UIButton!
     @IBOutlet fileprivate weak var userIdValidationLabel: UILabel!
     @IBOutlet fileprivate weak var titleValidationLabel: UILabel!
     
-    weak var delegate: ItemdetailsViewControllerDelegate?
+    weak var delegate: AlbumDetailsViewControllerDelegate?
     
     fileprivate lazy var activityIndicator: NVActivityIndicatorView = {
         let screenSize = UIScreen.main.bounds
@@ -28,7 +28,7 @@ class ItemDetailsViewController: UIViewController {
         return activityIndicator
     }()
 
-    var viewModel: ItemActionViewModel?
+    var viewModel: AlbumActionViewModel?
     
     fileprivate let disposeBag = DisposeBag()
 
@@ -54,7 +54,7 @@ class ItemDetailsViewController: UIViewController {
 
 // MARK: - Privates
 
-extension ItemDetailsViewController {
+extension AlbumDetailsViewController {
     fileprivate func bindViewModel() {
         guard let viewModel = viewModel else {
             return
@@ -128,4 +128,4 @@ extension ItemDetailsViewController {
 }
 
 // For using storyboard in coordinator
-extension ItemDetailsViewController: StoryboardInstantiable {}
+extension AlbumDetailsViewController: StoryboardInstantiable {}

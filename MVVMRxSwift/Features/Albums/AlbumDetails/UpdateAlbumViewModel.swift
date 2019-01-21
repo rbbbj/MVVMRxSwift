@@ -2,7 +2,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class UpdateItemViewModel : ItemActionViewModel {
+final class UpdateAlbumViewModel : AlbumActionViewModel {
     // Protocol (should be let so can't be in protocol extension)
     let userid = Variable<String>("")
     let title = Variable<String>("")
@@ -27,10 +27,10 @@ final class UpdateItemViewModel : ItemActionViewModel {
     
     private let disposeBag = DisposeBag()
     private let loadInProgress = Variable<Bool>(false)
-    private let updateInteractor: UpdateInteractor
+    private let albumUpdateInteractor: AlbumUpdateInteractor
     
-    init(album: Album, dependency: (updateInteractor: UpdateInteractor, validationService: ValidationService)) {
-        self.updateInteractor = dependency.updateInteractor
+    init(album: Album, dependency: (albumUpdateInteractor: AlbumUpdateInteractor, validationService: ValidationService)) {
+        self.albumUpdateInteractor = dependency.albumUpdateInteractor
         
         userid.value = String(album.userId ?? -1)
         title.value = String(album.title ?? "")
@@ -67,7 +67,7 @@ final class UpdateItemViewModel : ItemActionViewModel {
     private func update(album: Album) {
         loadInProgress.value = true
         let newAlbum = Album(userId: Int(userid.value) ?? 0, id: album.id, title: title.value)
-        updateInteractor.request(currentAlbum: album, with: newAlbum)
+        albumUpdateInteractor.request(currentAlbum: album, with: newAlbum)
             .subscribe { [weak self] completable in
                 guard let `self` = self else { return }
                 switch completable {

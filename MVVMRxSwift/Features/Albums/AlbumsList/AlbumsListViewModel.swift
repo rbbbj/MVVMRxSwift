@@ -2,7 +2,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class ItemsViewModel {
+final class AlbumsListViewModel {
     var albumCells: Observable<[Album]> {
         return displayCells.asObservable()
     }
@@ -17,13 +17,13 @@ final class ItemsViewModel {
     private let errorMessage = Variable<String>("")
     private let cells = Variable<[Album]>([])
     private var displayCells = Variable<[Album]>([])
-    private let listInteractor: ListInteractor
-    private let deleteInteractor: DeleteInteractor
+    private let albumsListInteractor: AlbumsListInteractor
+    private let albumDeleteInteractor: AlbumDeleteInteractor
     private let disposeBag = DisposeBag()
     
-    init(listInteractor: ListInteractor, deleteInteractor: DeleteInteractor) {
-        self.listInteractor = listInteractor
-        self.deleteInteractor = deleteInteractor
+    init(albumsListInteractor: AlbumsListInteractor, albumDeleteInteractor: AlbumDeleteInteractor) {
+        self.albumsListInteractor = albumsListInteractor
+        self.albumDeleteInteractor = albumDeleteInteractor
         
         searchText.asObservable()
             .subscribe(onNext: { [weak self] searchText in
@@ -38,7 +38,7 @@ final class ItemsViewModel {
     }
     
     func retrieveAllFromServer() {
-        listInteractor
+        albumsListInteractor
             .request()
             .subscribe(
                 onSuccess: { [weak self] albums in
@@ -78,7 +78,7 @@ final class ItemsViewModel {
     }
     
     func delete(album: Album) {
-        deleteInteractor
+        albumDeleteInteractor
             .request(album: album)
             .subscribe { [weak self] completable in
                 guard let `self` = self else { return }

@@ -3,19 +3,20 @@ import RxSwift
 import RxCocoa
 import SwiftMessages
 
-protocol ItemsViewControllerDelegate: class {
-    func itemsViewControllerDidSelectItem(_ selectedItem: Album)
-     func itemsViewControllerDidPressAdd()
+protocol AlbumsListViewControllerDelegate: class {
+    func albumsListViewControllerDidSelectAlbum(_ selectedAlbum: Album)
+    func albumsListViewControllerDidPressAdd()
 }
 
-class ItemsViewController: UIViewController {
+class AlbumsListViewController: UIViewController {
     @IBOutlet fileprivate weak var tableView: UITableView!
     @IBOutlet fileprivate weak var searchBar: UISearchBar!
     
-    weak var delegate: ItemsViewControllerDelegate?
+    weak var delegate: AlbumsListViewControllerDelegate?
     
     private var album: Album? = nil
-    private let viewModel: ItemsViewModel = ItemsViewModel(listInteractor: DependanciesProvider.shared.getListInteractor(), deleteInteractor: DependanciesProvider.shared.getDeleteInteractor())
+    private let viewModel: AlbumsListViewModel = AlbumsListViewModel(albumsListInteractor: AlbumsDependanciesProvider.shared.getListInteractor(),
+                                                                     albumDeleteInteractor: AlbumsDependanciesProvider.shared.getAlbumDeleteInteractor())
     private let disposeBag = DisposeBag()
     private let refreshControl = UIRefreshControl()
     
@@ -51,7 +52,7 @@ class ItemsViewController: UIViewController {
 
 // MARK: - Privates
 
-extension ItemsViewController {
+extension AlbumsListViewController {
     fileprivate func setupNavigationBar() {
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.leftBarButtonItem = editButtonItem
@@ -83,7 +84,7 @@ extension ItemsViewController {
     fileprivate func bindViewModel() {
         viewModel
             .albumCells
-            .bind(to: tableView.rx.items(cellIdentifier: "ItemsTableCell", cellType: ItemsTableCell.self)) { row, element, cell in
+            .bind(to: tableView.rx.items(cellIdentifier: "AlbumsListTableCell", cellType: AlbumsListTableCell.self)) { row, element, cell in
                 cell.configure(with: element)
             }
             .disposed(by: disposeBag)
@@ -108,7 +109,7 @@ extension ItemsViewController {
             .subscribe(
                 onNext: { [weak self] album in
                     guard let `self` = self else { return }
-                    self.delegate?.itemsViewControllerDidSelectItem(album)
+                    self.delegate?.albumsListViewControllerDidSelectAlbum(album)
                     if let selectedRowIndexPath = self.tableView.indexPathForSelectedRow {
                         self.tableView.deselectRow(at: selectedRowIndexPath, animated: true)
                     }
@@ -135,11 +136,11 @@ extension ItemsViewController {
 
 // MARK: - IBAction
 
-extension ItemsViewController {
+extension AlbumsListViewController {
     @IBAction fileprivate func addPressed() {
-        delegate?.itemsViewControllerDidPressAdd()
+        delegate?.albumsListViewControllerDidPressAdd()
     }
 }
 
 // For using storyboard in coordinator
-extension ItemsViewController: StoryboardInstantiable {}
+extension AlbumsListViewController: StoryboardInstantiable {}

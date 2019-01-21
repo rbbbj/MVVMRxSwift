@@ -1,6 +1,6 @@
 import RxSwift
 
-class Service {
+class AlbumService {
     private let network: Network
     
     init(network: Network) {

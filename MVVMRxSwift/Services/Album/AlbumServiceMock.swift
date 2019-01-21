@@ -1,6 +1,6 @@
 import RxSwift
 
-class ServiceMock: Service {
+class AlbumServiceMock: AlbumService {
     override func retrieveAll() -> Single<[Album]> {
         let json = """
 [

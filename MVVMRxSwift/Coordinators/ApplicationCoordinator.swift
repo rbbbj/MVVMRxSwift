@@ -3,18 +3,18 @@ import UIKit
 class ApplicationCoordinator: Coordinator {
     let window: UIWindow
     let navigationController: UINavigationController
-    let itemsCoordinator: ItemsCoordinator
+    let albumsListCoordinator: AlbumsListCoordinator
     
     init(window: UIWindow) {
         self.window = window
         navigationController = UINavigationController()
         navigationController.navigationBar.prefersLargeTitles = true
-        itemsCoordinator = ItemsCoordinator(navigationController: navigationController)
+        albumsListCoordinator = AlbumsListCoordinator(navigationController: navigationController)
     }
     
     func start() {
         window.rootViewController = navigationController
-        itemsCoordinator.start()
+        albumsListCoordinator.start()
         window.makeKeyAndVisible()
     }
 }

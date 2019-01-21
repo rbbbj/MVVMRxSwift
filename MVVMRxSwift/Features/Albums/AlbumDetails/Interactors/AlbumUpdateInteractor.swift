@@ -1,9 +1,9 @@
 import RxSwift
 
-class UpdateInteractor {
-    let repository: Repository
+class AlbumUpdateInteractor {
+    let repository: AlbumRepository
     
-    init(repository: Repository) {
+    init(repository: AlbumRepository) {
         self.repository = repository
     }
     

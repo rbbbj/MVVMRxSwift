@@ -14,10 +14,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Items View Controller-->
+        <!--Albums List View Controller-->
         <scene sceneID="EPf-eb-Bmf">
             <objects>
-                <viewController id="xpf-Z6-eWo" customClass="ItemsViewController" customModule="MVVMRxSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xpf-Z6-eWo" customClass="AlbumsListViewController" customModule="MVVMRxSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W2t-La-dbO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,7 +31,7 @@
                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ItemsTableCell" rowHeight="65" id="JnD-WQ-bhS" customClass="ItemsTableCell" customModule="MVVMRxSwift" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AlbumsListTableCell" rowHeight="65" id="JnD-WQ-bhS" customClass="AlbumsListTableCell" customModule="MVVMRxSwift" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="84" width="375" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JnD-WQ-bhS" id="kh3-0b-Vws">

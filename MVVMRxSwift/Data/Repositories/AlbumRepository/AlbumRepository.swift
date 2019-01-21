@@ -1,9 +1,9 @@
 import RxSwift
 
-class Repository {
-    let service: Service
+class AlbumRepository {
+    let service: AlbumService
     
-    init(service: Service) {
+    init(service: AlbumService) {
         self.service = service
     }
     

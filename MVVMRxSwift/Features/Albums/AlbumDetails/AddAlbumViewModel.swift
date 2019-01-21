@@ -2,7 +2,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class AddItemViewModel: ItemActionViewModel {
+final class AddAlbumViewModel: AlbumActionViewModel {
     // Protocol (should be let so can't be in protocol extension)
     let userid = Variable<String>("")
     let title = Variable<String>("")
@@ -26,10 +26,10 @@ final class AddItemViewModel: ItemActionViewModel {
     private let errorMessage = Variable<String>("")
     private let disposeBag = DisposeBag()
     private let loadInProgress = Variable<Bool>(false)
-    private let addInteractor: AddInteractor
+    private let albumAddInteractor: AlbumAddInteractor
     
-    init(dependency: (addInteractor: AddInteractor, validationService: ValidationService)) {
-        self.addInteractor = dependency.addInteractor
+    init(dependency: (albumAddInteractor: AlbumAddInteractor, validationService: ValidationService)) {
+        self.albumAddInteractor = dependency.albumAddInteractor
         
         validatedUserId = userid.asObservable()
             .map { userid in
@@ -64,7 +64,7 @@ final class AddItemViewModel: ItemActionViewModel {
         loadInProgress.value = true
         let id = RealmStore.shared.currentCount() + 1
         let album = Album(userId: Int(userid.value) ?? 0, id: id, title: title.value)
-        addInteractor.request(album: album)
+        albumAddInteractor.request(album: album)
             .subscribe { [weak self] completable in
                 guard let `self` = self else { return }
                 switch completable {

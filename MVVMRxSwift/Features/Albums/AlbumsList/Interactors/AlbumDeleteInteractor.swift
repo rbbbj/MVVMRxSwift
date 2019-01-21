@@ -1,9 +1,9 @@
 import RxSwift
 
-class DeleteInteractor {
-    let repository: Repository
+class AlbumDeleteInteractor {
+    let repository: AlbumRepository
     
-    init(repository: Repository) {
+    init(repository: AlbumRepository) {
         self.repository = repository
     }
 

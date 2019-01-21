@@ -1,6 +1,6 @@
 import UIKit
 
-class ItemsTableCell: UITableViewCell {
+class AlbumsListTableCell: UITableViewCell {
     @IBOutlet fileprivate weak var userIdLabel: UILabel!
     @IBOutlet fileprivate weak var titleLabel: UILabel!
     
@@ -8,8 +8,8 @@ class ItemsTableCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func configure(with item: Album) {
-        guard let userId = item.userId, let title = item.title else {
+    func configure(with album: Album) {
+        guard let userId = album.userId, let title = album.title else {
             return
         }
         userIdLabel.text = String(userId)
