@@ -12,7 +12,6 @@
 		643D989B215A3AA300A4EFA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 643D989A215A3AA300A4EFA2 /* Assets.xcassets */; };
 		643D989E215A3AA300A4EFA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 643D989C215A3AA300A4EFA2 /* LaunchScreen.storyboard */; };
 		643D98A9215A3AA300A4EFA2 /* MVVMRxSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643D98A8215A3AA300A4EFA2 /* MVVMRxSwiftTests.swift */; };
-		643D98B4215A3AA300A4EFA2 /* MVVMRxSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643D98B3215A3AA300A4EFA2 /* MVVMRxSwiftUITests.swift */; };
 		670BC10A21EF9F4600B51B9A /* AlbumActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BC0F721EF9F4500B51B9A /* AlbumActionViewModel.swift */; };
 		670BC10B21EF9F4600B51B9A /* AlbumDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BC0F821EF9F4500B51B9A /* AlbumDetailsViewController.swift */; };
 		670BC10C21EF9F4600B51B9A /* AlbumDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 670BC0F921EF9F4500B51B9A /* AlbumDetailsViewController.storyboard */; };
@@ -30,14 +29,14 @@
 		670BC11821EF9F4600B51B9A /* AlbumDeleteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BC10821EF9F4600B51B9A /* AlbumDeleteInteractor.swift */; };
 		670BC11921EF9F4600B51B9A /* AlbumsDependanciesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BC10921EF9F4600B51B9A /* AlbumsDependanciesProvider.swift */; };
 		670BC12421EF9FC500B51B9A /* AlbumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BC11B21EF9FC500B51B9A /* AlbumService.swift */; };
-		670BC12521EF9FC500B51B9A /* URLRequestCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BC11D21EF9FC500B51B9A /* URLRequestCreator.swift */; };
 		670BC12621EF9FC500B51B9A /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BC11E21EF9FC500B51B9A /* ReachabilityManager.swift */; };
 		670BC12721EF9FC500B51B9A /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BC11F21EF9FC500B51B9A /* Error.swift */; };
 		670BC12821EF9FC500B51B9A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BC12021EF9FC500B51B9A /* Network.swift */; };
-		670BC12921EF9FC500B51B9A /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BC12121EF9FC500B51B9A /* HTTPClient.swift */; };
 		670BC12A21EF9FC500B51B9A /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BC12221EF9FC500B51B9A /* ErrorMessage.swift */; };
 		670BC12B21EF9FC500B51B9A /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BC12321EF9FC500B51B9A /* Configuration.swift */; };
 		670BC12D21EFA73000B51B9A /* AlbumServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BC12C21EFA73000B51B9A /* AlbumServiceMock.swift */; };
+		671D7508220B269000038A09 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D7507220B269000038A09 /* Router.swift */; };
+		678F464D21FE102000B95538 /* MVVMRxSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643D98B3215A3AA300A4EFA2 /* MVVMRxSwiftUITests.swift */; };
 		679DC55921EE555E000BDCB2 /* Storyboard+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679DC55821EE555E000BDCB2 /* Storyboard+Ext.swift */; };
 		679DC56B21EF01DA000BDCB2 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679DC56721EF01DA000BDCB2 /* ApplicationCoordinator.swift */; };
 		679DC56C21EF01DA000BDCB2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679DC56821EF01DA000BDCB2 /* Coordinator.swift */; };
@@ -46,7 +45,6 @@
 		67F8598721E927EC00A1953B /* RMAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F8598621E927EC00A1953B /* RMAlbum.swift */; };
 		67F8599221E9369600A1953B /* Realm+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F8599121E9369600A1953B /* Realm+Ext.swift */; };
 		67F8599F21EA6BFE00A1953B /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F8599B21EA6BFE00A1953B /* UIViewController+Ext.swift */; };
-		67F859A221EA6BFE00A1953B /* UIAlertController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F8599E21EA6BFE00A1953B /* UIAlertController+Additions.swift */; };
 		67F859A721EA707000A1953B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67F859A921EA707000A1953B /* Localizable.strings */; };
 		67F85A1721ED299300A1953B /* RealmStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F85A1621ED299300A1953B /* RealmStore.swift */; };
 		A695B4B835A74D8812D74545 /* Pods_MVVMRxSwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFCBDCC6C9CA67B300BDF55 /* Pods_MVVMRxSwiftUITests.framework */; };
@@ -105,14 +103,13 @@
 		670BC10821EF9F4600B51B9A /* AlbumDeleteInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumDeleteInteractor.swift; sourceTree = "<group>"; };
 		670BC10921EF9F4600B51B9A /* AlbumsDependanciesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsDependanciesProvider.swift; sourceTree = "<group>"; };
 		670BC11B21EF9FC500B51B9A /* AlbumService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumService.swift; sourceTree = "<group>"; };
-		670BC11D21EF9FC500B51B9A /* URLRequestCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestCreator.swift; sourceTree = "<group>"; };
 		670BC11E21EF9FC500B51B9A /* ReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		670BC11F21EF9FC500B51B9A /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		670BC12021EF9FC500B51B9A /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		670BC12121EF9FC500B51B9A /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		670BC12221EF9FC500B51B9A /* ErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		670BC12321EF9FC500B51B9A /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		670BC12C21EFA73000B51B9A /* AlbumServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumServiceMock.swift; sourceTree = "<group>"; };
+		671D7507220B269000038A09 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		679DC55821EE555E000BDCB2 /* Storyboard+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard+Ext.swift"; sourceTree = "<group>"; };
 		679DC56721EF01DA000BDCB2 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		679DC56821EF01DA000BDCB2 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -121,7 +118,6 @@
 		67F8598621E927EC00A1953B /* RMAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMAlbum.swift; sourceTree = "<group>"; };
 		67F8599121E9369600A1953B /* Realm+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Realm+Ext.swift"; sourceTree = "<group>"; };
 		67F8599B21EA6BFE00A1953B /* UIViewController+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
-		67F8599E21EA6BFE00A1953B /* UIAlertController+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Additions.swift"; sourceTree = "<group>"; };
 		67F859A821EA707000A1953B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		67F85A1621ED299300A1953B /* RealmStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmStore.swift; sourceTree = "<group>"; };
 		7E2FED9E4C63E487C6E45806 /* Pods-MVVMRxSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMRxSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMRxSwift/Pods-MVVMRxSwift.release.xcconfig"; sourceTree = "<group>"; };
@@ -227,7 +223,6 @@
 			children = (
 				67F8599B21EA6BFE00A1953B /* UIViewController+Ext.swift */,
 				67F8599121E9369600A1953B /* Realm+Ext.swift */,
-				67F8599E21EA6BFE00A1953B /* UIAlertController+Additions.swift */,
 				679DC55821EE555E000BDCB2 /* Storyboard+Ext.swift */,
 			);
 			path = Helpers;
@@ -306,12 +301,11 @@
 			isa = PBXGroup;
 			children = (
 				670BC12321EF9FC500B51B9A /* Configuration.swift */,
-				670BC11D21EF9FC500B51B9A /* URLRequestCreator.swift */,
+				671D7507220B269000038A09 /* Router.swift */,
 				670BC12021EF9FC500B51B9A /* Network.swift */,
-				670BC12121EF9FC500B51B9A /* HTTPClient.swift */,
 				670BC11F21EF9FC500B51B9A /* Error.swift */,
-				670BC11E21EF9FC500B51B9A /* ReachabilityManager.swift */,
 				670BC12221EF9FC500B51B9A /* ErrorMessage.swift */,
+				670BC11E21EF9FC500B51B9A /* ReachabilityManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -440,6 +434,7 @@
 				643D988D215A3AA100A4EFA2 /* Frameworks */,
 				643D988E215A3AA100A4EFA2 /* Resources */,
 				BEA09405CA021445CC032B8B /* [CP] Embed Pods Frameworks */,
+				57FCD4081E1F093078FB50A4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -458,6 +453,8 @@
 				643D98A0215A3AA300A4EFA2 /* Sources */,
 				643D98A1215A3AA300A4EFA2 /* Frameworks */,
 				643D98A2215A3AA300A4EFA2 /* Resources */,
+				84FF603B678C8F8146321A9C /* [CP] Embed Pods Frameworks */,
+				516063FF54447CD90FBBB0C8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -477,6 +474,8 @@
 				643D98AB215A3AA300A4EFA2 /* Sources */,
 				643D98AC215A3AA300A4EFA2 /* Frameworks */,
 				643D98AD215A3AA300A4EFA2 /* Resources */,
+				AAA9BFC3922DF3C5E3881C59 /* [CP] Embed Pods Frameworks */,
+				1BC210312F00E6371F2402DA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -561,6 +560,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1BC210312F00E6371F2402DA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MVVMRxSwiftUITests/Pods-MVVMRxSwiftUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		30359D76394D26C226CAC3AB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -577,6 +591,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		516063FF54447CD90FBBB0C8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MVVMRxSwiftTests/Pods-MVVMRxSwiftTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		57FCD4081E1F093078FB50A4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MVVMRxSwift/Pods-MVVMRxSwift-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		78069BBFD30C08CAECF595AE /* [CP] Check Pods Manifest.lock */ = {
@@ -597,6 +641,45 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		84FF603B678C8F8146321A9C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MVVMRxSwiftTests/Pods-MVVMRxSwiftTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
+				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MVVMRxSwiftTests/Pods-MVVMRxSwiftTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AAA9BFC3922DF3C5E3881C59 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MVVMRxSwiftUITests/Pods-MVVMRxSwiftUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BEA09405CA021445CC032B8B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -604,6 +687,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MVVMRxSwift/Pods-MVVMRxSwift-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
@@ -616,6 +700,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
@@ -661,7 +746,6 @@
 				670BC11921EF9F4600B51B9A /* AlbumsDependanciesProvider.swift in Sources */,
 				679DC56E21EF01DA000BDCB2 /* AlbumsListCoordinator.swift in Sources */,
 				670BC12621EF9FC500B51B9A /* ReachabilityManager.swift in Sources */,
-				670BC12921EF9FC500B51B9A /* HTTPClient.swift in Sources */,
 				679DC56C21EF01DA000BDCB2 /* Coordinator.swift in Sources */,
 				670BC11821EF9F4600B51B9A /* AlbumDeleteInteractor.swift in Sources */,
 				D377611921F60CB5008D1719 /* AlbumRepository.swift in Sources */,
@@ -679,6 +763,7 @@
 				670BC11521EF9F4600B51B9A /* AlbumsListViewModel.swift in Sources */,
 				670BC11721EF9F4600B51B9A /* AlbumsListInteractor.swift in Sources */,
 				670BC11321EF9F4600B51B9A /* AlbumsListTableCell.swift in Sources */,
+				671D7508220B269000038A09 /* Router.swift in Sources */,
 				670BC10A21EF9F4600B51B9A /* AlbumActionViewModel.swift in Sources */,
 				D31284FD21EE2BD5006E2FDF /* Album.swift in Sources */,
 				679DC56D21EF01DA000BDCB2 /* AlbumDetailsCoordinator.swift in Sources */,
@@ -686,11 +771,9 @@
 				670BC10E21EF9F4600B51B9A /* AlbumUpdateInteractor.swift in Sources */,
 				670BC11021EF9F4600B51B9A /* AddAlbumViewModel.swift in Sources */,
 				670BC11621EF9F4600B51B9A /* AlbumsListViewController.swift in Sources */,
-				67F859A221EA6BFE00A1953B /* UIAlertController+Additions.swift in Sources */,
 				67F8599221E9369600A1953B /* Realm+Ext.swift in Sources */,
 				679DC55921EE555E000BDCB2 /* Storyboard+Ext.swift in Sources */,
 				D31284FC21EE2BD5006E2FDF /* Album+Mapping.swift in Sources */,
-				670BC12521EF9FC500B51B9A /* URLRequestCreator.swift in Sources */,
 				670BC12721EF9FC500B51B9A /* Error.swift in Sources */,
 				643D9894215A3AA100A4EFA2 /* AppDelegate.swift in Sources */,
 			);
@@ -708,7 +791,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				643D98B4215A3AA300A4EFA2 /* MVVMRxSwiftUITests.swift in Sources */,
+				678F464D21FE102000B95538 /* MVVMRxSwiftUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -910,7 +993,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5LEQ4G2BEZ;
+				DEVELOPMENT_TEAM = 9WVXMKT8E7;
 				INFOPLIST_FILE = MVVMRxSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -932,7 +1015,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5LEQ4G2BEZ;
+				DEVELOPMENT_TEAM = 9WVXMKT8E7;
 				INFOPLIST_FILE = MVVMRxSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

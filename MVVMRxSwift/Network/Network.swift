@@ -2,6 +2,7 @@ import Foundation
 import Reachability
 import RxSwift
 import RxCocoa
+import Alamofire
 
 final class Network {
     private var isOnline: Bool  {
@@ -12,99 +13,112 @@ final class Network {
     }
     
     func retrieveAll() -> Single<[Album]> {
-        return Single.create{ [isOnline] observer in
+        return Single.create { [isOnline] observer in
             if !isOnline {
                 return Disposables.create {}
             } else {
-                HTTPClient.shared.processFetchRequest() { result, error in
-                    if let error = error {
-                        observer(.error(error))
-                        return
-                    }
-                    guard let result = result else {
-                        observer(.error(DataError.unknownError))
-                        return
-                    }
-                    
-                    RealmStore.shared.removeAll()
-                    result.forEach {
-                        let album = $0
-                        RealmStore.shared.add(album: album)
-                    }
-                    
-                    observer(.success(result))
+                let request = AF.request(Router.readItems)
+                    .responseDecodable (decoder: JSONDecoder()) { (response: DataResponse<[Album]>) in
+                        switch response.result {
+                        case .success:
+                            guard let items = response.result.value else {
+                                return
+                            }
+                            RealmStore.shared.removeAll()
+                            items.forEach {
+                                let item = $0
+                                RealmStore.shared.add(item: item)
+                            }
+                            observer(.success(items))
+                        case .failure(let error):
+                            debugPrint(error.localizedDescription)
+                            let dataError = DataError.dataError
+                            observer(.error(dataError))
+                        }
+                };
+                
+                return Disposables.create {
+                    request.cancel()
                 }
             }
-            
-            return Disposables.create {}
         }
     }
     
-    func add(album: Album) -> Completable {
-        return Completable.create{ [isOnline] observer in
-            if !isOnline {
-                return Disposables.create {}
-            } else {
-                HTTPClient.shared.processAddRequest(album: album) { result, error in
-                    if let error = error {
-                        observer(.error(error))
-                        return
-                    }
-                    guard let result = result else {
-                        observer(.error(DataError.unknownError))
-                        return
-                    }
-                    
-                    RealmStore.shared.add(album: result)
-                    observer(.completed)
-                }
-            }
-            
-            return Disposables.create {}
-        }
-    }
-    
-    func delete(album: Album) -> Completable {
-        return Completable.create{ [isOnline] observer in
-            if !isOnline {
-                return Disposables.create {}
-            } else {
-                HTTPClient.shared.processDeleteRequest(for: album) { error in
-                    if let error = error {
-                        observer(.error(error))
-                        return
-                    }
-                    RealmStore.shared.remove(album: album)
-                    observer(.completed)
-                }
-            }
-            
-            return Disposables.create {}
-        }
-    }
-    
-    func update(currentAlbum: Album, with newAlbum: Album) -> Completable {
+    func add(item: Album) -> Completable {
         return Completable.create { [isOnline] observer in
             if !isOnline {
                 return Disposables.create {}
             } else {
-                HTTPClient.shared.processUpdateRequest(currentAlbum: currentAlbum, with: newAlbum) { result, error in
-                    if let error = error {
-                        observer(.error(error))
-                        return
-                    }
-                    guard let result = result else {
-                        observer(.error(DataError.unknownError))
-                        return
-                    }
-                    
-                    let album = result
-                    RealmStore.shared.update(album: album)
-                    observer(.completed)
+                let request = AF.request(Router.add(item: item))
+                    .response { response in
+                        switch response.result {
+                        case .success:
+                            RealmStore.shared.add(item: item)
+                            observer(.completed)
+                        case .failure(let error):
+                            debugPrint(error.localizedDescription)
+                            let dataError = DataError.dataError
+                            observer(.error(dataError))
+                        }
+                };
+                
+                return Disposables.create {
+                    request.cancel()
                 }
             }
-            
-            return Disposables.create {}
+        }
+    }
+    
+    func delete(item: Album) -> Completable {
+        return Completable.create { [isOnline] observer in
+            if !isOnline {
+                return Disposables.create {}
+            } else {
+                let request = AF.request(Router.delete(item: item))
+                    .response { response in
+                        switch response.result {
+                        case .success:
+                            RealmStore.shared.remove(item: item)
+                            observer(.completed)
+                        case .failure(let error):
+                            debugPrint(error.localizedDescription)
+                            let dataError = DataError.dataError
+                            observer(.error(dataError))
+                        }
+                };
+                
+                return Disposables.create {
+                    request.cancel()
+                }
+            }
+        }
+    }
+
+    func update(currentItem: Album, with newItem: Album) -> Completable {
+        return Completable.create { [isOnline] observer in
+            if !isOnline {
+                return Disposables.create {}
+            } else {
+                let request = AF.request(Router.update(item: currentItem, with: newItem))
+                    .responseDecodable (decoder: JSONDecoder()) { (response: DataResponse<Album>) in
+                        switch response.result {
+                        case .success:
+                            guard let item = response.result.value else {
+                                return
+                            }
+                            RealmStore.shared.update(item: item)
+                            observer(.completed)
+                        case .failure(let error):
+                            debugPrint(error.localizedDescription)
+                            let dataError = DataError.dataError
+                            observer(.error(dataError))
+                        }
+                };
+                
+                return Disposables.create {
+                    request.cancel()
+                }
+            }
         }
     }
 }

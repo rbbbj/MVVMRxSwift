@@ -13,10 +13,13 @@ target 'MVVMRxSwift' do
   pod 'NVActivityIndicatorView'
   pod 'ReachabilitySwift'
   pod 'SwiftMessages'
+  pod 'Alamofire', '~> 5.0.0.beta.1'
 
   target 'MVVMRxSwiftTests' do
-    inherit! :search_paths
     # Pods for testing
+    inherit! :search_paths
+    pod 'RxTest'
+    pod 'RxBlocking'
   end
 
   target 'MVVMRxSwiftUITests' do

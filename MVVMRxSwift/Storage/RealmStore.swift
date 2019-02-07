@@ -15,11 +15,11 @@ final class RealmStore {
         realmQueue = DispatchQueue(label: "com.MVVMRxSwift.realm")
     }
 
-    func remove(album: Album) {
+    func remove(item: Album) {
         realmQueue.async {
             if let realm = try? Realm() {
                 try? realm.write {
-                    realm.delete(realm.objects(RMAlbum.self).filter("id=%@", album.id!))
+                    realm.delete(realm.objects(RMAlbum.self).filter("id=%@", item.id!))
                 }
             }
         }
@@ -35,21 +35,21 @@ final class RealmStore {
         }
     }
     
-    func add(album: Album) {
+    func add(item: Album) {
         realmQueue.async {
             if let realm = try? Realm() {
                 try? realm.write {
-                    realm.add(album.asRealm())
+                    realm.add(item.asRealm())
                 }
             }
         }
     }
     
-    func update(album: Album) {
+    func update(item: Album) {
         realmQueue.async {
             if let realm = try? Realm() {
                 try? realm.write {
-                    realm.add(album.asRealm(), update: true)
+                    realm.add(item.asRealm(), update: true)
                 }
             }
         }

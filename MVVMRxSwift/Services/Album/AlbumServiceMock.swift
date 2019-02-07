@@ -116,7 +116,7 @@ class AlbumServiceMock: AlbumService {
             RealmStore.shared.removeAll()
             object.forEach {
                 let album = $0
-                RealmStore.shared.add(album: album)
+                RealmStore.shared.add(item: album)
             }
             return  Single.just(object)
         } catch {

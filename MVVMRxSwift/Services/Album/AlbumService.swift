@@ -8,15 +8,15 @@ class AlbumService {
     }
     
     func addDetails(for album: Album) -> Completable {
-        return network.add(album: album)
+        return network.add(item: album)
     }
     
     func delete(album: Album) -> Completable {
-        return network.delete(album: album)
+        return network.delete(item: album)
     }
     
     func updateDetails(currentAlbum: Album, with newAlbum: Album) -> Completable {
-        return network.update(currentAlbum: currentAlbum, with: newAlbum)
+        return network.update(currentItem: currentAlbum, with: newAlbum)
     }
     
     func retrieveAll() -> Single<[Album]> {

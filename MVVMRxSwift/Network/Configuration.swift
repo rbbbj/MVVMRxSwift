@@ -1,6 +1,6 @@
 import Foundation
 
-struct URLs {
+struct URL {
     static let host = "https://jsonplaceholder.typicode.com"
     struct path {
         static let albums = "/albums"
