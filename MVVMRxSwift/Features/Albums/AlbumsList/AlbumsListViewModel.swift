@@ -45,7 +45,7 @@ final class AlbumsListViewModel {
                 onSuccess: { [weak self] albums in
                     guard let `self` = self else { return }
                     self.cells.value = albums.map { $0 }
-                    self.cells.value.sort { ($0.userId ?? -1) < ($1.userId ?? -1) }
+                    self.cells.value.sort { ($0.id ?? -1) < ($1.id ?? -1) }
                     self.displayCells.value = self.cells.value
                     self.pullToRefresh.onNext(())
                     self.errorMessage.value = ""
@@ -75,12 +75,12 @@ final class AlbumsListViewModel {
     }
     
     func bindDatabase() {
-        let dbitems = RealmStore.shared.retrieveAll()!
+        let dbAlbums = RealmStore.shared.retrieveAll()!
         
-        Observable.array(from: dbitems)
-            .subscribe(onNext: { items  in
-                self.cells.value = items.map { $0.asDomain() }
-                self.cells.value.sort { ($0.userId ?? -1) < ($1.userId ?? -1) }
+        Observable.array(from: dbAlbums)
+            .subscribe(onNext: { albums  in
+                self.cells.value = albums.map { $0.asDomain() }
+                self.cells.value.sort { ($0.id ?? -1) < ($1.id ?? -1) }
                 self.displayCells.value = self.cells.value
                 self.errorMessage.value = ""
             })
