@@ -48,6 +48,14 @@ class AlbumsListViewController: UIViewController {
     }
 }
 
+// MARK: - UISearchBarDelegate
+
+extension AlbumsListViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+}
+
 // MARK: - Privates
 
 extension AlbumsListViewController {
@@ -57,6 +65,7 @@ extension AlbumsListViewController {
     }
     
     fileprivate func setupSearchBar() {
+        searchBar.delegate = self
         searchBar.autocapitalizationType = .none
         searchBar.rx.text.orEmpty
             .bind(to : viewModel.searchText)
