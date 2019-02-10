@@ -76,20 +76,5 @@ final class RealmStore {
         
         return count
     }
-    
-    func retrieveAllFromDatabase() -> Single<[Album]> {
-        return Single.create { observer in
-            var albums = [Album]()
-            guard let dbAlbums = RealmStore.shared.retrieveAll() else {
-                observer(.error(DataError.databaseError))
-                return Disposables.create {}
-            }
-            dbAlbums.forEach {
-                albums.append($0.asDomain())
-            }
-            observer(.success(albums))
-            
-            return Disposables.create {}
-        }
-    }
 }
+

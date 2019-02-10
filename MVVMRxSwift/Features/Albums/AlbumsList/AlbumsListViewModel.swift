@@ -1,6 +1,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RxRealm
 
 final class AlbumsListViewModel {
     var albumCells: Observable<[Album]> {
@@ -58,25 +59,6 @@ final class AlbumsListViewModel {
             .disposed(by: disposeBag)
     }
     
-    func retrieveAllFromDatabase() {
-        RealmStore.shared
-            .retrieveAllFromDatabase()
-            .subscribe(
-                onSuccess: { [weak self] albums in
-                    guard let `self` = self else { return }
-                    self.cells.value = albums.map { $0 }
-                    self.cells.value.sort { ($0.userId ?? -1) < ($1.userId ?? -1) }
-                    self.displayCells.value = self.cells.value
-                    self.errorMessage.value = ""
-                },
-                onError: { [weak self] error in
-                    guard let `self` = self else { return }
-                    self.errorMessage.value = error.localizedDescription
-                }
-            )
-            .disposed(by: disposeBag)
-    }
-    
     func delete(album: Album) {
         albumDeleteInteractor
             .request(album: album)
@@ -84,12 +66,24 @@ final class AlbumsListViewModel {
                 guard let `self` = self else { return }
                 switch completable {
                 case .completed:
-                    self.retrieveAllFromDatabase()
                     self.errorMessage.value = ""
                 case .error(let error):
                     self.errorMessage.value = error.localizedDescription
                 }
             }
+            .disposed(by: disposeBag)
+    }
+    
+    func bindDatabase() {
+        let dbitems = RealmStore.shared.retrieveAll()!
+        
+        Observable.array(from: dbitems)
+            .subscribe(onNext: { items  in
+                self.cells.value = items.map { $0.asDomain() }
+                self.cells.value.sort { ($0.userId ?? -1) < ($1.userId ?? -1) }
+                self.displayCells.value = self.cells.value
+                self.errorMessage.value = ""
+            })
             .disposed(by: disposeBag)
     }
 }

@@ -15,8 +15,9 @@ class AlbumsListViewController: UIViewController {
     weak var delegate: AlbumsListViewControllerDelegate?
     
     private var album: Album? = nil
-    private let viewModel: AlbumsListViewModel = AlbumsListViewModel(albumsListInteractor: AlbumsDependanciesProvider.shared.getListInteractor(),
-                                                                     albumDeleteInteractor: AlbumsDependanciesProvider.shared.getAlbumDeleteInteractor())
+    private let viewModel =
+        AlbumsListViewModel(albumsListInteractor: AlbumsDependanciesProvider.shared.getListInteractor(),
+                            albumDeleteInteractor: AlbumsDependanciesProvider.shared.getAlbumDeleteInteractor())
     private let disposeBag = DisposeBag()
     private let refreshControl = UIRefreshControl()
     
@@ -30,11 +31,8 @@ class AlbumsListViewController: UIViewController {
         setupCellDeleting()
         
         viewModel.retrieveAllFromServer()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        viewModel.retrieveAllFromDatabase()
+        
+        viewModel.bindDatabase()
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {

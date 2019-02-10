@@ -14,7 +14,8 @@ target 'MVVMRxSwift' do
   pod 'ReachabilitySwift'
   pod 'SwiftMessages'
   pod 'Alamofire', '~> 5.0.0.beta.1'
-
+  pod 'RxRealm'
+  
   target 'MVVMRxSwiftTests' do
     # Pods for testing
     inherit! :search_paths
