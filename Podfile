@@ -11,7 +11,7 @@ target 'MVVMRxSwift' do
   pod 'RxKeyboard'
   pod 'RealmSwift'
   pod 'NVActivityIndicatorView'
-  pod 'ReachabilitySwift'
+  pod 'RxReachability'
   pod 'SwiftMessages'
   pod 'Alamofire', '~> 5.0.0.beta.1'
   pod 'RxRealm'

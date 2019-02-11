@@ -7,7 +7,7 @@ protocol AlbumDetailsViewControllerDelegate: class {
     func cleanFromMemory()
 }
 
-class AlbumDetailsViewController: UIViewController {
+class AlbumDetailsViewController: BaseViewController {
     @IBOutlet fileprivate weak var userIdTextField: UITextField!
     @IBOutlet fileprivate weak var titleTextField: UITextField!
     @IBOutlet fileprivate weak var submitBtn: UIButton!
@@ -16,6 +16,7 @@ class AlbumDetailsViewController: UIViewController {
     
     weak var delegate: AlbumDetailsViewControllerDelegate?
     
+    var viewModel: AlbumActionViewModel?
     fileprivate lazy var activityIndicator: NVActivityIndicatorView = {
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
@@ -27,10 +28,6 @@ class AlbumDetailsViewController: UIViewController {
         let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: x, y: y, width: activityWidth, height: activityHeight))
         return activityIndicator
     }()
-
-    var viewModel: AlbumActionViewModel?
-    
-    fileprivate let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,11 +41,6 @@ class AlbumDetailsViewController: UIViewController {
         if self.isMovingFromParent {
             delegate?.cleanFromMemory()
         }
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        dch_checkDeallocation()
     }
 }
 
@@ -126,6 +118,3 @@ extension AlbumDetailsViewController {
         }
     }
 }
-
-// For using storyboard in coordinator
-extension AlbumDetailsViewController: StoryboardInstantiable {}

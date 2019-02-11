@@ -8,18 +8,17 @@ protocol AlbumsListViewControllerDelegate: class {
     func albumsListViewControllerDidPressAdd()
 }
 
-class AlbumsListViewController: UIViewController {
+class AlbumsListViewController: BaseViewController {
     @IBOutlet fileprivate weak var tableView: UITableView!
     @IBOutlet fileprivate weak var searchBar: UISearchBar!
     
     weak var delegate: AlbumsListViewControllerDelegate?
     
-    private var album: Album? = nil
-    private let viewModel =
+    fileprivate var album: Album? = nil
+    fileprivate let viewModel =
         AlbumsListViewModel(albumsListInteractor: AlbumsDependanciesProvider.shared.getListInteractor(),
                             albumDeleteInteractor: AlbumsDependanciesProvider.shared.getAlbumDeleteInteractor())
-    private let disposeBag = DisposeBag()
-    private let refreshControl = UIRefreshControl()
+    fileprivate let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,7 +90,8 @@ extension AlbumsListViewController {
     fileprivate func bindViewModel() {
         viewModel
             .albumCells
-            .bind(to: tableView.rx.items(cellIdentifier: "AlbumsListTableCell", cellType: AlbumsListTableCell.self)) { row, element, cell in
+            .bind(to: tableView.rx.items(cellIdentifier: "AlbumsListTableCell",
+                                         cellType: AlbumsListTableCell.self)) { row, element, cell in
                 cell.configure(with: element)
             }
             .disposed(by: disposeBag)
@@ -148,6 +148,3 @@ extension AlbumsListViewController {
         delegate?.albumsListViewControllerDidPressAdd()
     }
 }
-
-// For using storyboard in coordinator
-extension AlbumsListViewController: StoryboardInstantiable {}

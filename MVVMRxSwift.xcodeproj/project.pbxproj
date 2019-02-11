@@ -29,7 +29,6 @@
 		670BC11821EF9F4600B51B9A /* AlbumDeleteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BC10821EF9F4600B51B9A /* AlbumDeleteInteractor.swift */; };
 		670BC11921EF9F4600B51B9A /* AlbumsDependanciesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BC10921EF9F4600B51B9A /* AlbumsDependanciesProvider.swift */; };
 		670BC12421EF9FC500B51B9A /* AlbumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BC11B21EF9FC500B51B9A /* AlbumService.swift */; };
-		670BC12621EF9FC500B51B9A /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BC11E21EF9FC500B51B9A /* ReachabilityManager.swift */; };
 		670BC12721EF9FC500B51B9A /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BC11F21EF9FC500B51B9A /* Error.swift */; };
 		670BC12821EF9FC500B51B9A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BC12021EF9FC500B51B9A /* Network.swift */; };
 		670BC12A21EF9FC500B51B9A /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BC12221EF9FC500B51B9A /* ErrorMessage.swift */; };
@@ -42,6 +41,7 @@
 		679DC56C21EF01DA000BDCB2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679DC56821EF01DA000BDCB2 /* Coordinator.swift */; };
 		679DC56D21EF01DA000BDCB2 /* AlbumDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679DC56921EF01DA000BDCB2 /* AlbumDetailsCoordinator.swift */; };
 		679DC56E21EF01DA000BDCB2 /* AlbumsListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679DC56A21EF01DA000BDCB2 /* AlbumsListCoordinator.swift */; };
+		67B066102211E0D900626621 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B0660F2211E0D900626621 /* BaseViewController.swift */; };
 		67F8598721E927EC00A1953B /* RMAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F8598621E927EC00A1953B /* RMAlbum.swift */; };
 		67F8599221E9369600A1953B /* Realm+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F8599121E9369600A1953B /* Realm+Ext.swift */; };
 		67F8599F21EA6BFE00A1953B /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F8599B21EA6BFE00A1953B /* UIViewController+Ext.swift */; };
@@ -103,7 +103,6 @@
 		670BC10821EF9F4600B51B9A /* AlbumDeleteInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumDeleteInteractor.swift; sourceTree = "<group>"; };
 		670BC10921EF9F4600B51B9A /* AlbumsDependanciesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsDependanciesProvider.swift; sourceTree = "<group>"; };
 		670BC11B21EF9FC500B51B9A /* AlbumService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumService.swift; sourceTree = "<group>"; };
-		670BC11E21EF9FC500B51B9A /* ReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		670BC11F21EF9FC500B51B9A /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		670BC12021EF9FC500B51B9A /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		670BC12221EF9FC500B51B9A /* ErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
@@ -115,6 +114,7 @@
 		679DC56821EF01DA000BDCB2 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		679DC56921EF01DA000BDCB2 /* AlbumDetailsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumDetailsCoordinator.swift; sourceTree = "<group>"; };
 		679DC56A21EF01DA000BDCB2 /* AlbumsListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsListCoordinator.swift; sourceTree = "<group>"; };
+		67B0660F2211E0D900626621 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		67F8598621E927EC00A1953B /* RMAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMAlbum.swift; sourceTree = "<group>"; };
 		67F8599121E9369600A1953B /* Realm+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Realm+Ext.swift"; sourceTree = "<group>"; };
 		67F8599B21EA6BFE00A1953B /* UIViewController+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
@@ -239,6 +239,7 @@
 		670BC0F521EF9F4500B51B9A /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				67B0660E2211E0CC00626621 /* Base */,
 				D377611B21F60E25008D1719 /* Albums */,
 				670BC0FF21EF9F4500B51B9A /* ValidationService.swift */,
 				670BC10021EF9F4500B51B9A /* BindingExtensions.swift */,
@@ -305,7 +306,6 @@
 				670BC12021EF9FC500B51B9A /* Network.swift */,
 				670BC11F21EF9FC500B51B9A /* Error.swift */,
 				670BC12221EF9FC500B51B9A /* ErrorMessage.swift */,
-				670BC11E21EF9FC500B51B9A /* ReachabilityManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -327,6 +327,14 @@
 				677A436221F64AB6007CD2C9 /* Albums */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		67B0660E2211E0CC00626621 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				67B0660F2211E0D900626621 /* BaseViewController.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		67F8598121E91FCF00A1953B /* Data */ = {
@@ -695,6 +703,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxKeyboard/RxKeyboard.framework",
+				"${BUILT_PRODUCTS_DIR}/RxReachability/RxReachability.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRealm/RxRealm.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
@@ -709,6 +718,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxKeyboard.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxReachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRealm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
@@ -747,7 +757,7 @@
 				670BC12D21EFA73000B51B9A /* AlbumServiceMock.swift in Sources */,
 				670BC11921EF9F4600B51B9A /* AlbumsDependanciesProvider.swift in Sources */,
 				679DC56E21EF01DA000BDCB2 /* AlbumsListCoordinator.swift in Sources */,
-				670BC12621EF9FC500B51B9A /* ReachabilityManager.swift in Sources */,
+				67B066102211E0D900626621 /* BaseViewController.swift in Sources */,
 				679DC56C21EF01DA000BDCB2 /* Coordinator.swift in Sources */,
 				670BC11821EF9F4600B51B9A /* AlbumDeleteInteractor.swift in Sources */,
 				D377611921F60CB5008D1719 /* AlbumRepository.swift in Sources */,

@@ -8,6 +8,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Realm
         Realm.Configuration.defaultConfiguration = Realm.Configuration(
             schemaVersion: 1,
             migrationBlock: { migration, oldSchemaVersion in
@@ -16,9 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
         })
         print("Realm location: ", Realm.Configuration.defaultConfiguration.fileURL!)
-        
-        ReachabilityManager.sharedInstance.observeReachability()
-        
+
         // Coordinator
         let window = UIWindow(frame: UIScreen.main.bounds)
         let applicationCoordinator = ApplicationCoordinator(window: window)
