@@ -84,7 +84,7 @@ extension AlbumDetailsViewController {
             })
             .disposed(by: disposeBag)
         
-        viewModel.navigateBack.asObserver()
+        viewModel.navigateBack
             .subscribe({ [weak self] _ in
                 guard let `self` = self else { return }
                 DispatchQueue.main.async {

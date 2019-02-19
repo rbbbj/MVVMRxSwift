@@ -31,7 +31,9 @@ final class Network {
                             }
                             observer(.success(items))
                         case .failure(let error):
+                            #if DEBUG
                             debugPrint(error.localizedDescription)
+                            #endif
                             let dataError = DataError.dataError
                             observer(.error(dataError))
                         }
@@ -56,7 +58,9 @@ final class Network {
                             RealmStore.shared.add(item: item)
                             observer(.completed)
                         case .failure(let error):
+                            #if DEBUG
                             debugPrint(error.localizedDescription)
+                            #endif
                             let dataError = DataError.dataError
                             observer(.error(dataError))
                         }
@@ -81,7 +85,9 @@ final class Network {
                             RealmStore.shared.remove(item: item)
                             observer(.completed)
                         case .failure(let error):
+                            #if DEBUG
                             debugPrint(error.localizedDescription)
+                            #endif
                             let dataError = DataError.dataError
                             observer(.error(dataError))
                         }
@@ -109,7 +115,9 @@ final class Network {
                             RealmStore.shared.update(item: item)
                             observer(.completed)
                         case .failure(let error):
+                            #if DEBUG
                             debugPrint(error.localizedDescription)
+                            #endif
                             let dataError = DataError.dataError
                             observer(.error(dataError))
                         }
