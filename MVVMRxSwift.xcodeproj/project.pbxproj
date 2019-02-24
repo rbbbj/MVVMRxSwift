@@ -437,6 +437,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 643D98B8215A3AA300A4EFA2 /* Build configuration list for PBXNativeTarget "MVVMRxSwift" */;
 			buildPhases = (
+				67B0664F2222680000626621 /* ShellScript */,
 				30359D76394D26C226CAC3AB /* [CP] Check Pods Manifest.lock */,
 				643D988C215A3AA100A4EFA2 /* Sources */,
 				643D988D215A3AA100A4EFA2 /* Frameworks */,
@@ -630,6 +631,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MVVMRxSwift/Pods-MVVMRxSwift-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		67B0664F2222680000626621 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 		78069BBFD30C08CAECF595AE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

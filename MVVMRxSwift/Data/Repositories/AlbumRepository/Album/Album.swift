@@ -5,7 +5,7 @@ struct Album {
 }
 
 extension Album {
-    func toJson() -> [String : Any] {
-        return ["userId" : userId ?? -1, "id": id ?? -1, "title" : title ?? ""]
+    func toJson() -> [String: Any] {
+        return ["userId": userId ?? -1, "id": id ?? -1, "title": title ?? ""]
     }
 }

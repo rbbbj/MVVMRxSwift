@@ -23,9 +23,12 @@ class AlbumDetailsViewController: BaseViewController {
         let screenHeight = screenSize.height
         let activityWidth: CGFloat = 100.0 // activityIndicator width
         let activityHeight: CGFloat = 100.0 // activityIndicator height
-        let x = screenWidth / 2 - activityWidth / 2
-        let y = screenHeight / 2 - activityHeight / 2
-        let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: x, y: y, width: activityWidth, height: activityHeight))
+        let indicatorX = screenWidth / 2 - activityWidth / 2
+        let indicatorY = screenHeight / 2 - activityHeight / 2
+        let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: indicatorX,
+                                                                      y: indicatorY,
+                                                                      width: activityWidth,
+                                                                      height: activityHeight))
         return activityIndicator
     }()
 

@@ -1,6 +1,7 @@
 import RxSwift
 
 class AlbumServiceMock: AlbumService {
+    // swiftlint:disable function_body_length
     override func retrieveAll() -> Single<[Album]> {
         let json = """
 [
@@ -123,4 +124,5 @@ class AlbumServiceMock: AlbumService {
             return Single.just([Album]())
         }
     }
+    // swiftlint:enable function_body_length
 }

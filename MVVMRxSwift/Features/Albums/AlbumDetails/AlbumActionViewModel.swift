@@ -11,5 +11,5 @@ protocol AlbumActionViewModel {
     var submitButtonEnabled: Driver<Bool> { get }
     var navigateBack: PublishSubject<Void> { get }
     var showLoadingHud: Driver<Bool> { get }
-    var showErrorHud: Driver<String>  { get }
+    var showErrorHud: Driver<String> { get }
 }

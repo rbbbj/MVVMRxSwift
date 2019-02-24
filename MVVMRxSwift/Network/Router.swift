@@ -1,7 +1,6 @@
 import Alamofire
 
-enum Router: URLRequestConvertible
-{
+enum Router: URLRequestConvertible {
     case readItems
     case add(item: Album)
     case update(item: Album, with: Album)
@@ -27,13 +26,13 @@ enum Router: URLRequestConvertible
     var path: String {
         switch self {
         case .readItems:
-            return URL.path.albums
+            return URL.Path.albums
         case .add:
-            return URL.path.albums
+            return URL.Path.albums
         case .update(let currentItem, _):
-            return URL.path.albums + "/" + String(currentItem.id!)
+            return URL.Path.albums + "/" + String(currentItem.id!)
         case .delete(let item):
-            return URL.path.albums + "/" + String(item.id!)
+            return URL.Path.albums + "/" + String(item.id!)
         }
     }
 
@@ -54,9 +53,17 @@ enum Router: URLRequestConvertible
         case .readItems:
             break
         case .add(let item):
-            urlRequest.httpBody = try! JSONSerialization.data(withJSONObject: item.toJson(), options: [])
+            do {
+                urlRequest.httpBody = try JSONSerialization.data(withJSONObject: item.toJson(), options: [])
+            } catch {
+                ErrorMessage.showErrorHud(with: "Remote Data Error. 🙀")
+            }
         case .update( _, let newIitem):
-            urlRequest.httpBody = try! JSONSerialization.data(withJSONObject: newIitem.toJson(), options: [])
+            do {
+                urlRequest.httpBody = try JSONSerialization.data(withJSONObject: newIitem.toJson(), options: [])
+            } catch {
+                ErrorMessage.showErrorHud(with: "Remote Data Error. 🙀")
+            }
         case .delete:
             break
         }

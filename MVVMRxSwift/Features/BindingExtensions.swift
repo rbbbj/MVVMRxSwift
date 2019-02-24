@@ -5,9 +5,9 @@ import RxCocoa
 extension ValidationResult: CustomStringConvertible {
     var description: String {
         switch self {
-        case let .ok(message):
+        case let .success(message):
             return message
-        case let .failed(message):
+        case let .failure(message):
             return message
         }
     }
@@ -21,9 +21,9 @@ struct ValidationColors {
 extension ValidationResult {
     var textColor: UIColor {
         switch self {
-        case .ok:
+        case .success:
             return ValidationColors.okColor
-        case .failed:
+        case .failure:
             return ValidationColors.errorColor
         }
     }

@@ -9,7 +9,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Realm
-        // (schema does not change here, but in real project most likely would)
+        // note - just for demo purposes since schema does not change here
+        // swiftlint:disable unused_closure_parameter control_statement
         Realm.Configuration.defaultConfiguration = Realm.Configuration(
             schemaVersion: 1,
             migrationBlock: { migration, oldSchemaVersion in
@@ -17,11 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     //write the migration logic here
                 }
         })
+        // swiftlint:enable unused_closure_parameter control_statement
         #if DEBUG
         print("Realm location: ", Realm.Configuration.defaultConfiguration.fileURL!)
         #endif
         
-
         // Coordinator
         let window = UIWindow(frame: UIScreen.main.bounds)
         let applicationCoordinator = ApplicationCoordinator(window: window)
@@ -32,4 +33,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
-

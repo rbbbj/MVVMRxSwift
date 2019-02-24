@@ -4,14 +4,14 @@ import RxSwift
 import RxCocoa
 
 enum ValidationResult {
-    case ok(message: String)
-    case failed(message: String)
+    case success(message: String)
+    case failure(message: String)
 }
 
 extension ValidationResult {
     var isValid: Bool {
         switch self {
-        case .ok:
+        case .success:
             return true
         default:
             return false
@@ -22,25 +22,25 @@ extension ValidationResult {
 class ValidationService {
     func validateUserId(_ userId: String) -> ValidationResult {
         if userId.isEmpty {
-            return .failed(message: "Used ID can't be empty")
+            return .failure(message: "Used ID can't be empty")
         }
         
         if Int(userId) == nil {
-            return .failed(message: "Used ID has to be integer value")
+            return .failure(message: "Used ID has to be integer value")
         }
         
         // TODO: Add more checks
         
-        return .ok(message: "Acceptable")
+        return .success(message: "Acceptable")
     }
     
     func validateTitle(_ title: String) -> ValidationResult {
         if title.isEmpty {
-            return .failed(message: "Title can't be empty")
+            return .failure(message: "Title can't be empty")
         }
         
         // TODO: Add more checks
         
-        return .ok(message: "Acceptable")
+        return .success(message: "Acceptable")
     }
 }

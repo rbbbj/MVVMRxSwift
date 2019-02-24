@@ -13,7 +13,9 @@ extension StoryboardInstantiable where Self: UIViewController {
     
     static func instantiateViewController(_ bundle: Bundle? = nil) -> Self {
         let fileName = defaultFileName
-        let sb = UIStoryboard(name: fileName, bundle: bundle)
-        return sb.instantiateInitialViewController() as! Self
+        let storyboard = UIStoryboard(name: fileName, bundle: bundle)
+        // swiftlint:disable force_cast
+        return storyboard.instantiateInitialViewController() as! Self
+        // swiftlint:enable force_cast
     }
 }

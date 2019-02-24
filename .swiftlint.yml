@@ -1,0 +1,14 @@
+disabled_rules:
+ - trailing_whitespace
+ - todo
+  
+excluded:
+  - Pods
+
+identifier_name:
+  min_length:
+    error: 3
+  excluded:
+    - id
+
+reporter: "xcode"

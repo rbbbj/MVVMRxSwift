@@ -22,9 +22,10 @@ class AlbumsListCoordinator: Coordinator {
 
 extension AlbumsListCoordinator: AlbumsListViewControllerDelegate {
     func albumsListViewControllerDidSelectAlbum(_ selectedAlbum: Album) {
+        let updateInteractor = AlbumsDependanciesProvider.shared.getAlbumUpdateInteractor()
         let updateAlbumViewModel =
             UpdateAlbumViewModel(album: selectedAlbum,
-                                 dependency: (albumUpdateInteractor: AlbumsDependanciesProvider.shared.getAlbumUpdateInteractor(),
+                                 dependency: (albumUpdateInteractor: updateInteractor,
                                               validationService: ValidationService()))
         let albumDetailsCoordinator = AlbumDetailsCoordinator(navigationController: navigationController,
                                                               viewModel: updateAlbumViewModel)
@@ -33,10 +34,12 @@ extension AlbumsListCoordinator: AlbumsListViewControllerDelegate {
     }
     
     func albumsListViewControllerDidPressAdd() {
+        let addInteractor = AlbumsDependanciesProvider.shared.getAlbumAddInteractor()
         let addAlbumViewModel =
-            AddAlbumViewModel(dependency: (albumAddInteractor: AlbumsDependanciesProvider.shared.getAlbumAddInteractor(),
+            AddAlbumViewModel(dependency: (albumAddInteractor: addInteractor,
                                           validationService: ValidationService()))
-        let albumDetailsCoordinator = AlbumDetailsCoordinator(navigationController: navigationController, viewModel: addAlbumViewModel)
+        let albumDetailsCoordinator = AlbumDetailsCoordinator(navigationController: navigationController,
+                                                              viewModel: addAlbumViewModel)
         albumDetailsCoordinator.start()
         self.albumDetailsCoordinator = albumDetailsCoordinator
     }

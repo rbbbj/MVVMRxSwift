@@ -2,7 +2,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class UpdateAlbumViewModel : AlbumActionViewModel {
+final class UpdateAlbumViewModel: AlbumActionViewModel {
     // Protocol (should be let so can't be in protocol extension)
     let userid = Variable<String>("")
     let title = Variable<String>("")
@@ -29,7 +29,8 @@ final class UpdateAlbumViewModel : AlbumActionViewModel {
     private let loadInProgress = Variable<Bool>(false)
     private let albumUpdateInteractor: AlbumUpdateInteractor
     
-    init(album: Album, dependency: (albumUpdateInteractor: AlbumUpdateInteractor, validationService: ValidationService)) {
+    init(album: Album,
+         dependency: (albumUpdateInteractor: AlbumUpdateInteractor, validationService: ValidationService)) {
         self.albumUpdateInteractor = dependency.albumUpdateInteractor
         
         userid.value = String(album.userId ?? -1)
@@ -39,13 +40,13 @@ final class UpdateAlbumViewModel : AlbumActionViewModel {
             .map { userid in
                 return dependency.validationService.validateUserId(userid)
             }
-            .asDriver(onErrorJustReturn: .failed(message: "Please check your entry."))
+            .asDriver(onErrorJustReturn: .failure(message: "Please check your entry."))
         
         validatedTitle = title.asObservable()
             .map { title in
                 return dependency.validationService.validateTitle(title)
             }
-            .asDriver(onErrorJustReturn: .failed(message: "Please check your entry."))
+            .asDriver(onErrorJustReturn: .failure(message: "Please check your entry."))
         
         submitButtonEnabled = Driver.combineLatest(
             validatedUserId, validatedTitle

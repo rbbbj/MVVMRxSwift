@@ -5,7 +5,7 @@ import RxCocoa
 import Alamofire
 
 final class Network {
-    private var isOnline: Bool  {
+    private var isOnline: Bool {
         if let reachability = Reachability(), reachability.connection != .none {
             return true
         }
@@ -37,7 +37,7 @@ final class Network {
                             let dataError = DataError.dataError
                             observer(.error(dataError))
                         }
-                };
+                }
                 
                 return Disposables.create {
                     request.cancel()
@@ -64,7 +64,7 @@ final class Network {
                             let dataError = DataError.dataError
                             observer(.error(dataError))
                         }
-                };
+                }
                 
                 return Disposables.create {
                     request.cancel()
@@ -91,7 +91,7 @@ final class Network {
                             let dataError = DataError.dataError
                             observer(.error(dataError))
                         }
-                };
+                }
                 
                 return Disposables.create {
                     request.cancel()
@@ -121,7 +121,7 @@ final class Network {
                             let dataError = DataError.dataError
                             observer(.error(dataError))
                         }
-                };
+                }
                 
                 return Disposables.create {
                     request.cancel()

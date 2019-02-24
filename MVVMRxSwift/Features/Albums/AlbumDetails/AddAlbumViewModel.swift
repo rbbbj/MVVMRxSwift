@@ -35,13 +35,13 @@ final class AddAlbumViewModel: AlbumActionViewModel {
             .map { userid in
                 return dependency.validationService.validateUserId(userid)
             }
-            .asDriver(onErrorJustReturn: .failed(message: "Please check your entry."))
+            .asDriver(onErrorJustReturn: .failure(message: "Please check your entry."))
         
         validatedTitle = title.asObservable()
             .map { title in
                 return dependency.validationService.validateTitle(title)
             }
-        .asDriver(onErrorJustReturn: .failed(message: "Please check your entry."))
+        .asDriver(onErrorJustReturn: .failure(message: "Please check your entry."))
         
         submitButtonEnabled = Driver.combineLatest(
             validatedUserId,
@@ -62,8 +62,8 @@ final class AddAlbumViewModel: AlbumActionViewModel {
     
     private func addAlbum() {
         loadInProgress.value = true
-        let id = RealmStore.shared.currentCount() + 1
-        let album = Album(userId: Int(userid.value) ?? 0, id: id, title: title.value)
+        let albumId = RealmStore.shared.currentCount() + 1
+        let album = Album(userId: Int(userid.value) ?? 0, id: albumId, title: title.value)
         albumAddInteractor.request(album: album)
             .subscribe { [weak self] completable in
                 guard let `self` = self else { return }

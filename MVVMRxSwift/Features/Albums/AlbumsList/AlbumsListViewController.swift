@@ -14,7 +14,7 @@ class AlbumsListViewController: BaseViewController {
     
     weak var delegate: AlbumsListViewControllerDelegate?
     
-    fileprivate var album: Album? = nil
+    fileprivate var album: Album?
     fileprivate let viewModel =
         AlbumsListViewModel(albumsListInteractor: AlbumsDependanciesProvider.shared.getListInteractor(),
                             albumDeleteInteractor: AlbumsDependanciesProvider.shared.getAlbumDeleteInteractor())
@@ -39,8 +39,7 @@ class AlbumsListViewController: BaseViewController {
         if status == "Edit" {
             tableView.isEditing = true
             navigationItem.leftBarButtonItem?.title = "Done"
-        }
-        else {
+        } else {
             tableView.isEditing = false
             navigationItem.leftBarButtonItem?.title = "Edit"
         }
@@ -67,7 +66,7 @@ extension AlbumsListViewController {
         searchBar.delegate = self
         searchBar.autocapitalizationType = .none
         searchBar.rx.text.orEmpty
-            .bind(to : viewModel.searchText)
+            .bind(to: viewModel.searchText)
             .disposed(by: disposeBag)
     }
     
@@ -91,7 +90,7 @@ extension AlbumsListViewController {
         viewModel
             .albumCells
             .bind(to: tableView.rx.items(cellIdentifier: "AlbumsListTableCell",
-                                         cellType: AlbumsListTableCell.self)) { row, element, cell in
+                                         cellType: AlbumsListTableCell.self)) { _, element, cell in
                 cell.configure(with: element)
             }
             .disposed(by: disposeBag)

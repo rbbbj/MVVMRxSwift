@@ -6,15 +6,17 @@ target 'MVVMRxSwift' do
   use_frameworks!
 
   # Pods for MVVMRxSwift
+  pod 'SwiftLint'
+  pod 'RealmSwift'
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxKeyboard'
-  pod 'RealmSwift'
+  pod 'RxRealm'
   pod 'NVActivityIndicatorView'
   pod 'RxReachability'
   pod 'SwiftMessages'
   pod 'Alamofire', '~> 5.0.0.beta.1'
-  pod 'RxRealm'
+  
   
   target 'MVVMRxSwiftTests' do
     # Pods for testing

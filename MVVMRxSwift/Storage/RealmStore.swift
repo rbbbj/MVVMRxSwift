@@ -77,4 +77,3 @@ final class RealmStore {
         return count
     }
 }
-

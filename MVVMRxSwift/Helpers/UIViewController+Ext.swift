@@ -2,7 +2,8 @@ import UIKit
 
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                                 action: #selector(UIViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
     
@@ -25,7 +26,7 @@ extension UIViewController {
     @objc(dch_checkDeallocationAfterDelay:)
     public func dch_checkDeallocation(afterDelay delay: TimeInterval = 2.0) {
         #if DEBUG
-        let rootParentViewController = dch_rootParentViewController
+        let rootParentViewController = dchRootParentViewController
         
         // We don't check `isBeingDismissed` simply on this view controller because it's common
         // to wrap a view controller in another view controller (e.g. a stock UINavigationController)
@@ -46,7 +47,7 @@ extension UIViewController {
         self.dch_checkDeallocation()
     }
     
-    private var dch_rootParentViewController: UIViewController {
+    private var dchRootParentViewController: UIViewController {
         var root = self
         
         while let parent = root.parent {
