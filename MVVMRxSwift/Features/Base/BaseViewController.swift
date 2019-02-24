@@ -35,7 +35,7 @@ extension BaseViewController {
     func bindReachability() {
         Reachability.rx.isConnected
             .subscribe(onNext: {
-                ErrorMessage.showErrorHud(with: "")
+                ErrorMessage.hideErrorHud()
             })
             .disposed(by: disposeBag)
         

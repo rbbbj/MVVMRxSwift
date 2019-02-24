@@ -83,7 +83,6 @@ extension AlbumDetailsViewController {
         viewModel.showLoadingHud
             .drive(onNext: { [weak self] in
                 self?.showLoadingHud(visible: $0)
-                
             })
             .disposed(by: disposeBag)
         
@@ -105,8 +104,12 @@ extension AlbumDetailsViewController {
             .disposed(by: disposeBag)
         
         viewModel.showErrorHud
-            .drive(onNext: {
-                ErrorMessage.showErrorHud(with: $0)
+            .drive(onNext: { message in
+                if message.isEmpty {
+                    ErrorMessage.hideErrorHud()
+                } else {
+                    ErrorMessage.showErrorHud(with: message)
+                }
             })
             .disposed(by: disposeBag)
     }

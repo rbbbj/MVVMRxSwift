@@ -11,4 +11,8 @@ identifier_name:
   excluded:
     - id
 
+function_body_length:
+  warning: 80
+  error: 200
+
 reporter: "xcode"

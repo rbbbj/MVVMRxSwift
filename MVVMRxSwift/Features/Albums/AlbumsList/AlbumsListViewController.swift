@@ -103,8 +103,12 @@ extension AlbumsListViewController {
             .disposed(by: disposeBag)
         
         viewModel.showErrorHud
-            .drive(onNext: {
-                ErrorMessage.showErrorHud(with: $0)
+            .drive(onNext: { message in
+                if message.isEmpty {
+                    ErrorMessage.hideErrorHud()
+                } else {
+                    ErrorMessage.showErrorHud(with: message)
+                }
             })
             .disposed(by: disposeBag)
     }
