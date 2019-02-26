@@ -3,8 +3,7 @@ import RxSwift
 import NVActivityIndicatorView
 
 protocol AlbumDetailsViewControllerDelegate: class {
-    func popBack()
-    func cleanFromMemory()
+    func goBack()
 }
 
 class AlbumDetailsViewController: BaseViewController {
@@ -36,14 +35,6 @@ class AlbumDetailsViewController: BaseViewController {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
         bindViewModel()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        // Required to avoid memory leak
-        if self.isMovingFromParent {
-            delegate?.cleanFromMemory()
-        }
     }
 }
 
@@ -90,7 +81,7 @@ extension AlbumDetailsViewController {
             .subscribe({ [weak self] _ in
                 guard let `self` = self else { return }
                 DispatchQueue.main.async {
-                    self.delegate?.popBack()
+                    self.delegate?.goBack()
                 }
             })
             .disposed(by: disposeBag)

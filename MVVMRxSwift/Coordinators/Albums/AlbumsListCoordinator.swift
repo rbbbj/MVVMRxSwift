@@ -1,20 +1,19 @@
 import UIKit
 
 class AlbumsListCoordinator: Coordinator {
-  private let navigationController: UINavigationController
-  private var albumsListViewController: AlbumsListViewController?
-  private var albumDetailsCoordinator: AlbumDetailsCoordinator?
-  
-  init(navigationController: UINavigationController) {
-    self.navigationController = navigationController
-  }
+    let navigationController: UINavigationController
+    var childCoordinators: [Coordinator] = []
+    fileprivate var albumDetailsCoordinator: AlbumDetailsCoordinator?
+
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
     
     func start() {
         let albumsListViewController = AlbumsListViewController.instantiateViewController()
         albumsListViewController.delegate = self
         albumsListViewController.title = "List"
         navigationController.pushViewController(albumsListViewController, animated: true)
-        self.albumsListViewController = albumsListViewController
     }
 }
 
@@ -29,8 +28,8 @@ extension AlbumsListCoordinator: AlbumsListViewControllerDelegate {
                                               validationService: ValidationService()))
         let albumDetailsCoordinator = AlbumDetailsCoordinator(navigationController: navigationController,
                                                               viewModel: updateAlbumViewModel)
+        addChildCoordinator(albumDetailsCoordinator)
         albumDetailsCoordinator.start()
-        self.albumDetailsCoordinator = albumDetailsCoordinator
     }
     
     func albumsListViewControllerDidPressAdd() {
@@ -40,7 +39,15 @@ extension AlbumsListCoordinator: AlbumsListViewControllerDelegate {
                                           validationService: ValidationService()))
         let albumDetailsCoordinator = AlbumDetailsCoordinator(navigationController: navigationController,
                                                               viewModel: addAlbumViewModel)
+        addChildCoordinator(albumDetailsCoordinator)
         albumDetailsCoordinator.start()
-        self.albumDetailsCoordinator = albumDetailsCoordinator
+    }
+}
+
+// MARK: - AlbumDetailsCoordinatorDelegate
+
+extension AlbumsListCoordinator: AlbumDetailsCoordinatorDelegate {
+    func goBack() {
+        removeChildCoordinator(albumDetailsCoordinator!)
     }
 }

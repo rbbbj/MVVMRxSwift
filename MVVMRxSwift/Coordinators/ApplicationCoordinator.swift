@@ -4,6 +4,7 @@ class ApplicationCoordinator: Coordinator {
     let window: UIWindow
     let navigationController: UINavigationController
     let albumsListCoordinator: AlbumsListCoordinator
+    var childCoordinators: [Coordinator] = []
     
     init(window: UIWindow) {
         self.window = window
