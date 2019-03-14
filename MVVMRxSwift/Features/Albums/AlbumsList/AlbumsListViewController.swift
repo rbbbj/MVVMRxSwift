@@ -79,7 +79,7 @@ extension AlbumsListViewController {
         
         refreshControl.rx.controlEvent(.valueChanged)
             .do(onNext: { [weak self] in
-                guard let `self` = self else { return }
+                guard let self = self else { return }
                 self.viewModel.retrieveAllFromServer()
             })
             .subscribe()
@@ -133,7 +133,7 @@ extension AlbumsListViewController {
             .modelDeleted(Album.self)
             .subscribe(
                 onNext: { [weak self] album in
-                    guard let `self` = self else { return }
+                    guard let self = self else { return }
                     self.viewModel.delete(album: album)
                     if let selectedRowIndexPath = self.tableView.indexPathForSelectedRow {
                         self.tableView.deselectRow(at: selectedRowIndexPath, animated: true)

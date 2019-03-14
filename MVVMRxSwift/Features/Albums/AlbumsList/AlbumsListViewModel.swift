@@ -28,7 +28,7 @@ final class AlbumsListViewModel {
         
         searchText.asObservable()
             .subscribe(onNext: { [weak self] searchText in
-                guard let `self` = self else { return }
+                guard let self = self else { return }
                 if searchText.count == 0 {
                     self.displayCells.value = self.cells.value
                 } else {
@@ -43,7 +43,7 @@ final class AlbumsListViewModel {
             .request()
             .subscribe(
                 onSuccess: { [weak self] albums in
-                    guard let `self` = self else { return }
+                    guard let self = self else { return }
                     self.cells.value = albums.map { $0 }
                     self.cells.value.sort { ($0.id ?? -1) < ($1.id ?? -1) }
                     self.displayCells.value = self.cells.value
@@ -51,7 +51,7 @@ final class AlbumsListViewModel {
                     self.errorMessage.value = ""
                 },
                 onError: { [weak self] error in
-                    guard let `self` = self else { return }
+                    guard let self = self else { return }
                     self.errorMessage.value = error.localizedDescription
                     self.pullToRefresh.onNext(())
                 }
@@ -63,7 +63,7 @@ final class AlbumsListViewModel {
         albumDeleteInteractor
             .request(album: album)
             .subscribe { [weak self] completable in
-                guard let `self` = self else { return }
+                guard let self = self else { return }
                 switch completable {
                 case .completed:
                     self.errorMessage.value = ""

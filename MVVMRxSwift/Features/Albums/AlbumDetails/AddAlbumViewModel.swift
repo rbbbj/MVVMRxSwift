@@ -53,7 +53,7 @@ final class AddAlbumViewModel: AlbumActionViewModel {
         
         submitButtonTap
             .subscribe(onNext: { [weak self] in
-                guard let `self` = self else { return }
+                guard let self = self else { return }
                 self.addAlbum()
                 }
             )
@@ -66,7 +66,7 @@ final class AddAlbumViewModel: AlbumActionViewModel {
         let album = Album(userId: Int(userid.value) ?? 0, id: albumId, title: title.value)
         albumAddInteractor.request(album: album)
             .subscribe { [weak self] completable in
-                guard let `self` = self else { return }
+                guard let self = self else { return }
                 switch completable {
                 case .completed:
                     self.loadInProgress.value = false

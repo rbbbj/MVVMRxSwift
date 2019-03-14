@@ -79,7 +79,7 @@ extension AlbumDetailsViewController {
         
         viewModel.navigateBack
             .subscribe({ [weak self] _ in
-                guard let `self` = self else { return }
+                guard let self = self else { return }
                 DispatchQueue.main.async {
                     self.delegate?.goBack()
                 }
